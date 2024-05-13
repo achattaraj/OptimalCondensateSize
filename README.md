@@ -3,6 +3,7 @@ This repo contains simulation and data analysis methods of the research article 
 *  __Figure 2 and Figure 3__ contains files related to reaction-diffusion simulations using the [Virtual Cell](https://vcell.org/support) software
 *  __Figure 4__ contains python files related to the analytical solutions of the Ordinary Differential Equation (ODE)
 *  __Figure 5__ contains python files to solve ODEs with a distribution of cluster sizes
+*  __Supplementary_data__ contains Virtaul Cell input files as well as the source data visualized in Figures 1, 2 and 3. 
 
 __Requirements__:
 (Versions of the softwares used in this study are listed here)
