@@ -1,7 +1,8 @@
 This repo contains simulation and data analysis methods of the research article titled **"Multi-condensate state as a functional strategy to optimize the cell signaling output"**.
-*  __LAMMPS_sims__ contains files related to Langevin Dynamics simulations (Figure 1). Instructions on [how to run lammps](https://docs.lammps.org/Run_head.html)
-*  __PDE_VCell__ contains files related to reaction-diffusion simulations (Partial Differential Equation models) using the [Virtual Cell](https://vcell.org/support) software (Figures 2 and 3)
-*  __ODE_Solutions__ contains python files related to the Ordinary Differential Equation models (Figures 4 and 5)
+*  __Figure 1__ contains files related to Langevin Dynamics simulations, using the LAMMPS software. Instructions on [how to run lammps](https://docs.lammps.org/Run_head.html)
+*  __Figure 2 and Figure 3__ contains files related to reaction-diffusion simulations using the [Virtual Cell](https://vcell.org/support) software
+*  __Figure 4__ contains python files related to the analytical solutions of the Ordinary Differential Equation (ODE)
+*  __Figure 5__ contains python files to solve ODEs with a distribution of cluster sizes
 
 __Requirements__:
 (Versions of the softwares used in this study are listed here)
