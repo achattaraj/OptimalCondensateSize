@@ -1,0 +1,19 @@
+import "Nephrin.lt"
+import "Nck.lt"
+import "NWASP.lt"
+import "Arp23.lt"
+
+
+# The polymers must be listed and instantiated in the same order as that in the packmol file (if there are multiple polymers packed into the xyz file)
+
+p1 = new Nephrin[80]
+p2 = new Nck[240]
+p3 = new NWASP[120]
+p4 = new Arp23[60]
+
+write_once("Data Boundary") 
+{
+  -250 250 xlo xhi
+  -250 250 ylo yhi
+  0 300 zlo zhi
+}

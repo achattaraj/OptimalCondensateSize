@@ -1,0 +1,73 @@
+NWASP {
+
+write_once("Data Masses") { 
+@atom:PRM  450
+@atom:nwL  450
+@atom:VCA  450
+} 
+
+write("Data Atoms") { 
+$atom:1 $mol:. @atom:PRM 0 0 0 0
+$atom:2 $mol:. @atom:nwL 0 0 0 0
+$atom:3 $mol:. @atom:nwL 0 0 0 0
+$atom:4 $mol:. @atom:PRM 0 0 0 0
+$atom:5 $mol:. @atom:nwL 0 0 0 0
+$atom:6 $mol:. @atom:nwL 0 0 0 0
+$atom:7 $mol:. @atom:PRM 0 0 0 0
+$atom:8 $mol:. @atom:nwL 0 0 0 0
+$atom:9 $mol:. @atom:nwL 0 0 0 0
+$atom:10 $mol:. @atom:PRM 0 0 0 0
+$atom:11 $mol:. @atom:nwL 0 0 0 0
+$atom:12 $mol:. @atom:nwL 0 0 0 0
+$atom:13 $mol:. @atom:PRM 0 0 0 0
+$atom:14 $mol:. @atom:nwL 0 0 0 0
+$atom:15 $mol:. @atom:nwL 0 0 0 0
+$atom:16 $mol:. @atom:PRM 0 0 0 0
+$atom:17 $mol:. @atom:nwL 0 0 0 0
+$atom:18 $mol:. @atom:nwL 0 0 0 0
+$atom:19 $mol:. @atom:VCA 0 0 0 0
+} 
+
+write("Data Bonds") { 
+$bond:b1    @bond:Bond   $atom:1  $atom:2
+$bond:b2    @bond:Bond   $atom:2  $atom:3
+$bond:b3    @bond:Bond   $atom:3  $atom:4
+$bond:b4    @bond:Bond   $atom:4  $atom:5
+$bond:b5    @bond:Bond   $atom:5  $atom:6
+$bond:b6    @bond:Bond   $atom:6  $atom:7
+$bond:b7    @bond:Bond   $atom:7  $atom:8
+$bond:b8    @bond:Bond   $atom:8  $atom:9
+$bond:b9    @bond:Bond   $atom:9  $atom:10
+$bond:b10    @bond:Bond   $atom:10  $atom:11
+$bond:b11    @bond:Bond   $atom:11  $atom:12
+$bond:b12    @bond:Bond   $atom:12  $atom:13
+$bond:b13    @bond:Bond   $atom:13  $atom:14
+$bond:b14    @bond:Bond   $atom:14  $atom:15
+$bond:b15    @bond:Bond   $atom:15  $atom:16
+$bond:b16    @bond:Bond   $atom:16  $atom:17
+$bond:b17    @bond:Bond   $atom:17  $atom:18
+$bond:b18    @bond:Bond   $atom:18  $atom:19
+} 
+
+write("Data Angles") { 
+$angle:a1    @angle:Angle   $atom:1  $atom:2  $atom:3
+$angle:a2    @angle:Angle   $atom:2  $atom:3  $atom:4
+$angle:a3    @angle:Angle   $atom:3  $atom:4  $atom:5
+$angle:a4    @angle:Angle   $atom:4  $atom:5  $atom:6
+$angle:a5    @angle:Angle   $atom:5  $atom:6  $atom:7
+$angle:a6    @angle:Angle   $atom:6  $atom:7  $atom:8
+$angle:a7    @angle:Angle   $atom:7  $atom:8  $atom:9
+$angle:a8    @angle:Angle   $atom:8  $atom:9  $atom:10
+$angle:a9    @angle:Angle   $atom:9  $atom:10  $atom:11
+$angle:a10    @angle:Angle   $atom:10  $atom:11  $atom:12
+$angle:a11    @angle:Angle   $atom:11  $atom:12  $atom:13
+$angle:a12    @angle:Angle   $atom:12  $atom:13  $atom:14
+$angle:a13    @angle:Angle   $atom:13  $atom:14  $atom:15
+$angle:a14    @angle:Angle   $atom:14  $atom:15  $atom:16
+$angle:a15    @angle:Angle   $atom:15  $atom:16  $atom:17
+$angle:a16    @angle:Angle   $atom:16  $atom:17  $atom:18
+$angle:a17    @angle:Angle   $atom:17  $atom:18  $atom:19
+} 
+
+} 
+#NWASP

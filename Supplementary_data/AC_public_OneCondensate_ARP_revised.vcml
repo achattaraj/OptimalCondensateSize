@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This biomodel was generated in VCML Version Rel_Version_7.5.0_build_62.2-->
+<vcml xmlns="http://sourceforge.net/projects/vcell/vcml" Version="Rel_Version_7.5.0_build_62.2">
+  <BioModel Name="AC_public_OneCondensate_ARP_revised">
+    <Model Name="model">
+      <Compound Name="s1" />
+      <Compound Name="s0" />
+      <Compound Name="s2" />
+      <Compound Name="s3" />
+      <Feature Name="condensate" KeyValue="255311625" />
+      <Feature Name="Cyt" KeyValue="255311627" />
+      <Membrane MembraneVoltage="Voltage_CM" Name="CM" KeyValue="255311629" />
+      <LocalizedCompound Name="GA" CompoundRef="s1" Structure="Cyt" OverrideName="true" KeyValue="255311631" />
+      <LocalizedCompound Name="arp_cm" CompoundRef="s0" Structure="CM" OverrideName="true" KeyValue="255311632" />
+      <LocalizedCompound Name="arp_cyt" CompoundRef="s2" Structure="Cyt" OverrideName="true" KeyValue="255311633" />
+      <LocalizedCompound Name="FA" CompoundRef="s3" Structure="Cyt" OverrideName="true" KeyValue="255311634" />
+      <SimpleReaction Structure="CM" Name="r0" Reversible="false" FluxOption="MolecularOnly" KeyValue="255311635">
+        <Reactant LocalizedCompoundRef="arp_cm" Stoichiometry="1" KeyValue="255311636" />
+        <Product LocalizedCompoundRef="arp_cyt" Stoichiometry="1" KeyValue="255311637" />
+        <Kinetics KineticsType="MassAction">
+          <Parameter Name="J" Role="reaction rate" Unit="molecules.um-2.s-1">((Kf * arp_cm) - (Kr * arp_cyt))</Parameter>
+          <Parameter Name="I" Role="inward current density" Unit="pA.um-2">0.0</Parameter>
+          <Parameter Name="netValence" Role="net charge valence" Unit="1">1.0</Parameter>
+          <Parameter Name="Kf" Role="forward rate constant" Unit="s-1">100.0</Parameter>
+          <Parameter Name="Kr" Role="reverse rate constant" Unit="molecules.um-2.s-1.uM-1">0.0</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <SimpleReaction Structure="Cyt" Name="r1" Reversible="false" FluxOption="MolecularOnly" KeyValue="255311638">
+        <Reactant LocalizedCompoundRef="GA" Stoichiometry="1" KeyValue="255311639" />
+        <Product LocalizedCompoundRef="FA" Stoichiometry="1" KeyValue="255311640" />
+        <Modifier LocalizedCompoundRef="arp_cyt" />
+        <Kinetics KineticsType="GeneralKinetics">
+          <Parameter Name="J" Role="reaction rate" Unit="uM.s-1">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Parameter>
+          <Parameter Name="k_rxn" Role="user defined" Unit="tbd">0.001</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <SimpleReaction Structure="Cyt" Name="r2" Reversible="false" FluxOption="MolecularOnly" KeyValue="255311642">
+        <Reactant LocalizedCompoundRef="FA" Stoichiometry="1" KeyValue="255311643" />
+        <Product LocalizedCompoundRef="GA" Stoichiometry="1" KeyValue="255311644" />
+        <Kinetics KineticsType="MassAction">
+          <Parameter Name="J" Role="reaction rate" Unit="uM.s-1">((Kf * FA) - (Kr * GA))</Parameter>
+          <Parameter Name="Kf" Role="forward rate constant" Unit="s-1">1.0</Parameter>
+          <Parameter Name="Kr" Role="reverse rate constant" Unit="s-1">0.0</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <Diagram Name="c1" Structure="Cyt">
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm" LocationX="48" LocationY="107" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="14" LocationY="119" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="152" LocationY="115" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="40" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="70" LocationY="160" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="64" LocationY="49" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="113" LocationY="112" />
+      </Diagram>
+      <Diagram Name="m0" Structure="CM">
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm" LocationX="48" LocationY="107" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="14" LocationY="119" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="152" LocationY="115" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="40" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="70" LocationY="160" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="64" LocationY="49" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="113" LocationY="112" />
+      </Diagram>
+      <Diagram Name="c0" Structure="condensate">
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm" LocationX="48" LocationY="107" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="14" LocationY="119" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="152" LocationY="115" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="40" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="70" LocationY="160" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="64" LocationY="49" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="113" LocationY="112" />
+      </Diagram>
+      <Version Name="model" KeyValue="255311619" BranchId="254426080" Archived="0" Date="21-Apr-2023 00:20:47" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+      </Version>
+      <ModelUnitSystem VolumeSubstanceUnit="uM.um3" MembraneSubstanceUnit="molecules" LumpedReactionSubstanceUnit="molecules" VolumeUnit="um3" AreaUnit="um2" LengthUnit="um" TimeUnit="s" />
+    </Model>
+    <SimulationSpec Name="Reference" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation />
+      <Geometry Name="Geometry5" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="condensate" Handle="1" Type="Analytical" KeyValue="270852700">
+          <AnalyticExpression>((((x - 10.0) ^ 2.0) + ((y - 10.0) ^ 2.0) + ((z - 0.0) ^ 2.0)) &lt; (4.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="Cyt" Handle="0" Type="Analytical" KeyValue="270852701">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="Cyt_condensate_membrane" SubVolume1Ref="Cyt" SubVolume2Ref="condensate" KeyValue="270852702" />
+        <SurfaceDescription NumSamplesX="101" NumSamplesY="101" NumSamplesZ="101" CutoffFrequency="0.3">
+          <VolumeRegion Name="Cyt0" RegionID="0" SubVolume="Cyt" Size="3866.442" Unit="um3" />
+          <VolumeRegion Name="condensate1" RegionID="1" SubVolume="condensate" Size="133.55800000000002" Unit="um3" />
+          <MembraneRegion Name="membrane_Cyt0_condensate1" VolumeRegion1="condensate1" VolumeRegion2="Cyt0" Size="100.00367218415863" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry5" KeyValue="270852697" BranchId="254426066" Archived="0" Date="18-Apr-2024 17:19:36" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="condensate" GeometryClass="condensate" SubVolume="condensate" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="Cyt" GeometryClass="Cyt" SubVolume="Cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="CM" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="Cyt_condensate_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>1000.0</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Application0_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_CM">1.0</Constant>
+        <Constant Name="arp_cm_diffusionRate">1.0</Constant>
+        <Constant Name="arp_cm_init_molecules_um_2">1000.0</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="Kf_r0">100.0</Constant>
+        <Constant Name="Kf_r2">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r0">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="netValence">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_CM">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_condensate">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_Cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm" Domain="Cyt_condensate_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="Cyt" />
+        <VolumeVariable Name="FA" Domain="Cyt" />
+        <VolumeVariable Name="GA" Domain="Cyt" />
+        <Function Name="J_r0" Domain="Cyt_condensate_membrane">((Kf_r0 * arp_cm) - (Kr_r0 * arp_cyt))</Function>
+        <Function Name="J_r1" Domain="Cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r2" Domain="Cyt">((Kf_r2 * FA) - (Kr_r2 * GA))</Function>
+        <Function Name="KFlux_CM_Cyt" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM / VolumePerUnitVolume_Cyt)</Function>
+        <Function Name="Size_CM" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM * vcRegionArea('Cyt_condensate_membrane'))</Function>
+        <Function Name="Size_condensate" Domain="condensate">(VolumePerUnitVolume_condensate * vcRegionVolume('condensate'))</Function>
+        <Function Name="Size_Cyt" Domain="Cyt">(VolumePerUnitVolume_Cyt * vcRegionVolume('Cyt'))</Function>
+        <Function Name="sobj_condensate1_Cyt0_size" Domain="Cyt_condensate_membrane">vcRegionArea('Cyt_condensate_membrane')</Function>
+        <Function Name="vobj_condensate1_size" Domain="condensate">vcRegionVolume('condensate')</Function>
+        <Function Name="vobj_Cyt0_size" Domain="Cyt">vcRegionVolume('Cyt')</Function>
+        <CompartmentSubDomain Name="condensate">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="Cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r1 + J_r2)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r1 - J_r2)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="Cyt_condensate_membrane" InsideCompartment="Cyt" OutsideCompartment="condensate">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm" SolutionType="Unknown">
+            <Rate>- J_r0</Rate>
+            <Diffusion>arp_cm_diffusionRate</Diffusion>
+            <Initial>arp_cm_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>(KFlux_CM_Cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r0)</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Application0_generated" KeyValue="270852717" BranchId="254426077" Archived="0" Date="18-Apr-2024 17:19:37" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="ROI" ErrorString="" FunctionType="Volume">((((x - 10.0) ^ 2.0) + ((y - 10.0) ^ 2.0) + (z ^ 2.0)) &lt; (5.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="FA_D_titrate">
+        <Annotation>cloned from 'Simulation0' owned by user temp</Annotation>
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides>
+          <Constant Name="FA_diffusionRate" ConstantArraySpec="1000">"0.125", "0.25", "0.5", "0.75", "1.0", "1.33", "2.0", "4.0", "8.0"</Constant>
+        </MathOverrides>
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="FA_D_titrate" KeyValue="270852747" BranchId="264902670" Archived="0" Date="18-Apr-2024 17:19:37" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+          <Annotation>cloned from 'Simulation0' owned by user temp</Annotation>
+          <ParentSimRef KeyValue="270759321" />
+        </Version>
+      </Simulation>
+      <Simulation Name="D_GA_10_D_FA_1">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="20.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="1.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="D_GA_10_D_FA_1" KeyValue="270852749" BranchId="270812458" Archived="0" Date="18-Apr-2024 17:19:37" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+          <ParentSimRef KeyValue="270759310" />
+        </Version>
+      </Simulation>
+      <Simulation Name="D_GA_10_D_FA_2">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="20.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="1.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides>
+          <Constant Name="FA_diffusionRate">2.0</Constant>
+        </MathOverrides>
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="D_GA_10_D_FA_2" KeyValue="270852751" BranchId="270812461" Archived="0" Date="18-Apr-2024 17:19:37" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+          <ParentSimRef KeyValue="270812460" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_Cyt0" Type="Volume" subVolume="Cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_condensate1" Type="Volume" subVolume="condensate" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_condensate1_Cyt0" Type="Surface" subVolumeInside="condensate" regionIdInside="1" subVolumeOutside="Cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name="Reference" KeyValue="270852721" BranchId="270759297" Archived="0" Date="18-Apr-2024 17:19:37" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <SimulationSpec Name="hemiS_0.8" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation>(copied from Reference)</Annotation>
+      <Geometry Name="Geometry5" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="condensate" Handle="1" Type="Analytical" KeyValue="270846219">
+          <AnalyticExpression>(((((x - 10.0) ^ 2.0) / (4.31 ^ 2.0)) + (((y - 10.0) ^ 2.0) / (4.31 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (3.44 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="Cyt" Handle="0" Type="Analytical" KeyValue="270846220">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="Cyt_condensate_membrane" SubVolume1Ref="Cyt" SubVolume2Ref="condensate" KeyValue="270846221" />
+        <SurfaceDescription NumSamplesX="128" NumSamplesY="128" NumSamplesZ="64" CutoffFrequency="0.3">
+          <VolumeRegion Name="Cyt0" RegionID="0" SubVolume="Cyt" Size="3865.993128811654" Unit="um3" />
+          <VolumeRegion Name="condensate1" RegionID="1" SubVolume="condensate" Size="134.0068711883455" Unit="um3" />
+          <MembraneRegion Name="membrane_Cyt0_condensate1" VolumeRegion1="condensate1" VolumeRegion2="Cyt0" Size="101.10111423632696" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry5" KeyValue="270846216" BranchId="254426066" Archived="0" Date="18-Apr-2024 15:17:51" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="condensate" GeometryClass="condensate" SubVolume="condensate" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="Cyt" GeometryClass="Cyt" SubVolume="Cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="CM" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="Cyt_condensate_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>990.0</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Copy of Reference_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_CM">1.0</Constant>
+        <Constant Name="arp_cm_diffusionRate">1.0</Constant>
+        <Constant Name="arp_cm_init_molecules_um_2">990.0</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="Kf_r0">100.0</Constant>
+        <Constant Name="Kf_r2">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r0">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="netValence">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_CM">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_condensate">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_Cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm" Domain="Cyt_condensate_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="Cyt" />
+        <VolumeVariable Name="FA" Domain="Cyt" />
+        <VolumeVariable Name="GA" Domain="Cyt" />
+        <Function Name="J_r0" Domain="Cyt_condensate_membrane">((Kf_r0 * arp_cm) - (Kr_r0 * arp_cyt))</Function>
+        <Function Name="J_r1" Domain="Cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r2" Domain="Cyt">((Kf_r2 * FA) - (Kr_r2 * GA))</Function>
+        <Function Name="KFlux_CM_Cyt" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM / VolumePerUnitVolume_Cyt)</Function>
+        <Function Name="Size_CM" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM * vcRegionArea('Cyt_condensate_membrane'))</Function>
+        <Function Name="Size_condensate" Domain="condensate">(VolumePerUnitVolume_condensate * vcRegionVolume('condensate'))</Function>
+        <Function Name="Size_Cyt" Domain="Cyt">(VolumePerUnitVolume_Cyt * vcRegionVolume('Cyt'))</Function>
+        <Function Name="sobj_condensate1_Cyt0_size" Domain="Cyt_condensate_membrane">vcRegionArea('Cyt_condensate_membrane')</Function>
+        <Function Name="vobj_condensate1_size" Domain="condensate">vcRegionVolume('condensate')</Function>
+        <Function Name="vobj_Cyt0_size" Domain="Cyt">vcRegionVolume('Cyt')</Function>
+        <CompartmentSubDomain Name="condensate">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="Cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r1 + J_r2)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r1 - J_r2)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="Cyt_condensate_membrane" InsideCompartment="Cyt" OutsideCompartment="condensate">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm" SolutionType="Unknown">
+            <Rate>- J_r0</Rate>
+            <Diffusion>arp_cm_diffusionRate</Diffusion>
+            <Initial>arp_cm_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>(KFlux_CM_Cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r0)</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Copy of Reference_generated" KeyValue="270851186" BranchId="270846247" Archived="0" Date="18-Apr-2024 17:17:18" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="ROI" ErrorString="" FunctionType="Volume">((((x - 10.0) ^ 2.0) + ((y - 10.0) ^ 2.0) + (z ^ 2.0)) &lt; (5.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="Ref_sim_hemiS_0.8">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="Ref_sim_hemiS_0.8" KeyValue="270899579" BranchId="270846298" Archived="0" Date="19-Apr-2024 18:36:15" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_Cyt0" Type="Volume" subVolume="Cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_condensate1" Type="Volume" subVolume="condensate" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_condensate1_Cyt0" Type="Surface" subVolumeInside="condensate" regionIdInside="1" subVolumeOutside="Cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name="hemiS_0.8" KeyValue="270851201" BranchId="270846256" Archived="0" Date="18-Apr-2024 17:17:18" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+        <Annotation>(copied from Reference)</Annotation>
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <SimulationSpec Name=" hemiS_0.6" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation>(copied from hemiS_0.8) (copied from Reference)</Annotation>
+      <Geometry Name="Geometry5" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="condensate" Handle="1" Type="Analytical" KeyValue="270852710">
+          <AnalyticExpression>(((((x - 10.0) ^ 2.0) / (4.75 ^ 2.0)) + (((y - 10.0) ^ 2.0) / (4.75 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (2.84 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="Cyt" Handle="0" Type="Analytical" KeyValue="270852711">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="Cyt_condensate_membrane" SubVolume1Ref="Cyt" SubVolume2Ref="condensate" KeyValue="270852712" />
+        <SurfaceDescription NumSamplesX="128" NumSamplesY="128" NumSamplesZ="64" CutoffFrequency="0.3">
+          <VolumeRegion Name="Cyt0" RegionID="0" SubVolume="Cyt" Size="3865.85141424251" Unit="um3" />
+          <VolumeRegion Name="condensate1" RegionID="1" SubVolume="condensate" Size="134.14858575748895" Unit="um3" />
+          <MembraneRegion Name="membrane_Cyt0_condensate1" VolumeRegion1="condensate1" VolumeRegion2="Cyt0" Size="105.33801441315948" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry5" KeyValue="270852707" BranchId="254426066" Archived="0" Date="18-Apr-2024 17:19:36" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="condensate" GeometryClass="condensate" SubVolume="condensate" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="Cyt" GeometryClass="Cyt" SubVolume="Cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="CM" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="Cyt_condensate_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>943.4</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Copy of hemiS_0.8_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_CM">1.0</Constant>
+        <Constant Name="arp_cm_diffusionRate">1.0</Constant>
+        <Constant Name="arp_cm_init_molecules_um_2">943.4</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="Kf_r0">100.0</Constant>
+        <Constant Name="Kf_r2">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r0">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="netValence">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_CM">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_condensate">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_Cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm" Domain="Cyt_condensate_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="Cyt" />
+        <VolumeVariable Name="FA" Domain="Cyt" />
+        <VolumeVariable Name="GA" Domain="Cyt" />
+        <Function Name="J_r0" Domain="Cyt_condensate_membrane">((Kf_r0 * arp_cm) - (Kr_r0 * arp_cyt))</Function>
+        <Function Name="J_r1" Domain="Cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r2" Domain="Cyt">((Kf_r2 * FA) - (Kr_r2 * GA))</Function>
+        <Function Name="KFlux_CM_Cyt" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM / VolumePerUnitVolume_Cyt)</Function>
+        <Function Name="Size_CM" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM * vcRegionArea('Cyt_condensate_membrane'))</Function>
+        <Function Name="Size_condensate" Domain="condensate">(VolumePerUnitVolume_condensate * vcRegionVolume('condensate'))</Function>
+        <Function Name="Size_Cyt" Domain="Cyt">(VolumePerUnitVolume_Cyt * vcRegionVolume('Cyt'))</Function>
+        <Function Name="sobj_condensate1_Cyt0_size" Domain="Cyt_condensate_membrane">vcRegionArea('Cyt_condensate_membrane')</Function>
+        <Function Name="vobj_condensate1_size" Domain="condensate">vcRegionVolume('condensate')</Function>
+        <Function Name="vobj_Cyt0_size" Domain="Cyt">vcRegionVolume('Cyt')</Function>
+        <CompartmentSubDomain Name="condensate">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="Cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r1 + J_r2)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r1 - J_r2)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="Cyt_condensate_membrane" InsideCompartment="Cyt" OutsideCompartment="condensate">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm" SolutionType="Unknown">
+            <Rate>- J_r0</Rate>
+            <Diffusion>arp_cm_diffusionRate</Diffusion>
+            <Initial>arp_cm_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>(KFlux_CM_Cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r0)</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Copy of hemiS_0.8_generated" KeyValue="270852719" BranchId="270846250" Archived="0" Date="18-Apr-2024 17:19:37" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="ROI" ErrorString="" FunctionType="Volume">((((x - 10.0) ^ 2.0) + ((y - 10.0) ^ 2.0) + (z ^ 2.0)) &lt; (5.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="Ref_sim_hemiS_0.6">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="Ref_sim_hemiS_0.6" KeyValue="270899545" BranchId="270846301" Archived="0" Date="19-Apr-2024 18:35:41" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_Cyt0" Type="Volume" subVolume="Cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_condensate1" Type="Volume" subVolume="condensate" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_condensate1_Cyt0" Type="Surface" subVolumeInside="condensate" regionIdInside="1" subVolumeOutside="Cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name=" hemiS_0.6" KeyValue="270852734" BranchId="270846270" Archived="0" Date="18-Apr-2024 17:19:37" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+        <Annotation>(copied from hemiS_0.8) (copied from Reference)</Annotation>
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <SimulationSpec Name="hemiS_0.4" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation>(copied from  hemiS_0.6) (copied from hemiS_0.8) (copied from Reference)</Annotation>
+      <Geometry Name="Geometry5" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="condensate" Handle="1" Type="Analytical" KeyValue="270846239">
+          <AnalyticExpression>(((((x - 10.0) ^ 2.0) / (5.41 ^ 2.0)) + (((y - 10.0) ^ 2.0) / (5.41 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (2.18 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="Cyt" Handle="0" Type="Analytical" KeyValue="270846240">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="Cyt_condensate_membrane" SubVolume1Ref="Cyt" SubVolume2Ref="condensate" KeyValue="270846241" />
+        <SurfaceDescription NumSamplesX="128" NumSamplesY="128" NumSamplesZ="64" CutoffFrequency="0.3">
+          <VolumeRegion Name="Cyt0" RegionID="0" SubVolume="Cyt" Size="3866.11122428594" Unit="um3" />
+          <VolumeRegion Name="condensate1" RegionID="1" SubVolume="condensate" Size="133.88877571405934" Unit="um3" />
+          <MembraneRegion Name="membrane_Cyt0_condensate1" VolumeRegion1="condensate1" VolumeRegion2="Cyt0" Size="116.9828019318008" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry5" KeyValue="270846236" BranchId="254426066" Archived="0" Date="18-Apr-2024 15:17:51" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="condensate" GeometryClass="condensate" SubVolume="condensate" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="Cyt" GeometryClass="Cyt" SubVolume="Cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="CM" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="Cyt_condensate_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>847.4</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Copy of  hemiS_0.6_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_CM">1.0</Constant>
+        <Constant Name="arp_cm_diffusionRate">1.0</Constant>
+        <Constant Name="arp_cm_init_molecules_um_2">847.4</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="Kf_r0">100.0</Constant>
+        <Constant Name="Kf_r2">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r0">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="netValence">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_CM">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_condensate">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_Cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm" Domain="Cyt_condensate_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="Cyt" />
+        <VolumeVariable Name="FA" Domain="Cyt" />
+        <VolumeVariable Name="GA" Domain="Cyt" />
+        <Function Name="J_r0" Domain="Cyt_condensate_membrane">((Kf_r0 * arp_cm) - (Kr_r0 * arp_cyt))</Function>
+        <Function Name="J_r1" Domain="Cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r2" Domain="Cyt">((Kf_r2 * FA) - (Kr_r2 * GA))</Function>
+        <Function Name="KFlux_CM_Cyt" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM / VolumePerUnitVolume_Cyt)</Function>
+        <Function Name="Size_CM" Domain="Cyt_condensate_membrane">(AreaPerUnitArea_CM * vcRegionArea('Cyt_condensate_membrane'))</Function>
+        <Function Name="Size_condensate" Domain="condensate">(VolumePerUnitVolume_condensate * vcRegionVolume('condensate'))</Function>
+        <Function Name="Size_Cyt" Domain="Cyt">(VolumePerUnitVolume_Cyt * vcRegionVolume('Cyt'))</Function>
+        <Function Name="sobj_condensate1_Cyt0_size" Domain="Cyt_condensate_membrane">vcRegionArea('Cyt_condensate_membrane')</Function>
+        <Function Name="vobj_condensate1_size" Domain="condensate">vcRegionVolume('condensate')</Function>
+        <Function Name="vobj_Cyt0_size" Domain="Cyt">vcRegionVolume('Cyt')</Function>
+        <CompartmentSubDomain Name="condensate">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="Cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r1 + J_r2)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r1 - J_r2)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="Cyt_condensate_membrane" InsideCompartment="Cyt" OutsideCompartment="condensate">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm" SolutionType="Unknown">
+            <Rate>- J_r0</Rate>
+            <Diffusion>arp_cm_diffusionRate</Diffusion>
+            <Initial>arp_cm_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>(KFlux_CM_Cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r0)</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Copy of  hemiS_0.6_generated" KeyValue="270852772" BranchId="270846253" Archived="0" Date="18-Apr-2024 17:20:18" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="ROI" ErrorString="" FunctionType="Volume">((((x - 10.0) ^ 2.0) + ((y - 10.0) ^ 2.0) + (z ^ 2.0)) &lt; (5.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="Ref_sim_hemiS_0.4">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="Ref_sim_hemiS_0.4" KeyValue="270899562" BranchId="270846304" Archived="0" Date="19-Apr-2024 18:35:58" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_Cyt0" Type="Volume" subVolume="Cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_condensate1" Type="Volume" subVolume="condensate" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_condensate1_Cyt0" Type="Surface" subVolumeInside="condensate" regionIdInside="1" subVolumeOutside="Cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name="hemiS_0.4" KeyValue="270852774" BranchId="270846284" Archived="0" Date="18-Apr-2024 17:20:18" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+        <Annotation>(copied from  hemiS_0.6) (copied from hemiS_0.8) (copied from Reference)</Annotation>
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <Version Name="AC_public_OneCondensate_ARP_revised" KeyValue="270899581" BranchId="270759212" Archived="0" Date="19-Apr-2024 18:36:15" FromVersionable="false">
+      <Owner Name="Ani" Identifier="118630685" />
+      <GroupAccess Type="1" />
+    </Version>
+    <pathwayModel>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bp="http://www.biopax.org/release/biopax-level3.owl#" version="3.0" />
+    </pathwayModel>
+    <relationshipModel>
+      <RMNS version="3.0" />
+    </relationshipModel>
+    <vcmetadata>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" />
+      <nonrdfAnnotationList />
+      <uriBindingList />
+    </vcmetadata>
+  </BioModel>
+</vcml>
+

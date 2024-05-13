@@ -1,0 +1,46 @@
+Nephrin {
+
+write_once("Data Masses") { 
+@atom:Anchor  1000
+@atom:NephL  450
+@atom:pY  450
+} 
+
+write("Data Atoms") { 
+$atom:1 $mol:. @atom:Anchor 0 0 0 0
+$atom:2 $mol:. @atom:NephL 0 0 0 0
+$atom:3 $mol:. @atom:NephL 0 0 0 0
+$atom:4 $mol:. @atom:pY 0 0 0 0
+$atom:5 $mol:. @atom:NephL 0 0 0 0
+$atom:6 $mol:. @atom:NephL 0 0 0 0
+$atom:7 $mol:. @atom:pY 0 0 0 0
+$atom:8 $mol:. @atom:NephL 0 0 0 0
+$atom:9 $mol:. @atom:NephL 0 0 0 0
+$atom:10 $mol:. @atom:pY 0 0 0 0
+} 
+
+write("Data Bonds") { 
+$bond:b1    @bond:Bond   $atom:1  $atom:2
+$bond:b2    @bond:Bond   $atom:2  $atom:3
+$bond:b3    @bond:Bond   $atom:3  $atom:4
+$bond:b4    @bond:Bond   $atom:4  $atom:5
+$bond:b5    @bond:Bond   $atom:5  $atom:6
+$bond:b6    @bond:Bond   $atom:6  $atom:7
+$bond:b7    @bond:Bond   $atom:7  $atom:8
+$bond:b8    @bond:Bond   $atom:8  $atom:9
+$bond:b9    @bond:Bond   $atom:9  $atom:10
+} 
+
+write("Data Angles") { 
+$angle:a1    @angle:Angle   $atom:1  $atom:2  $atom:3
+$angle:a2    @angle:Angle   $atom:2  $atom:3  $atom:4
+$angle:a3    @angle:Angle   $atom:3  $atom:4  $atom:5
+$angle:a4    @angle:Angle   $atom:4  $atom:5  $atom:6
+$angle:a5    @angle:Angle   $atom:5  $atom:6  $atom:7
+$angle:a6    @angle:Angle   $atom:6  $atom:7  $atom:8
+$angle:a7    @angle:Angle   $atom:7  $atom:8  $atom:9
+$angle:a8    @angle:Angle   $atom:8  $atom:9  $atom:10
+} 
+
+} 
+#Nephrin

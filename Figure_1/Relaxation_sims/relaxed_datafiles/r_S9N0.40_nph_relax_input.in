@@ -1,0 +1,101 @@
+variable T equal 310 
+
+variable seed equal 14327
+
+variable fName string r_S9N0.40_relaxed
+log ${fName}.log
+
+units           real
+boundary 		p p f
+atom_style      full
+
+neighbor 1.9 bin
+neigh_modify every 1 delay 1 check yes 
+
+read_restart final_state_S9N0.40_relax.restart
+
+
+fix zwalls all wall/reflect zlo EDGE zhi EDGE
+
+angle_style  cosine
+angle_coeff   *  1  # K (energy unit) 
+
+bond_style 		hybrid harmonic harmonic/shift/cut
+# bond-type, K (energy/distance^2), R0 (distance) 
+
+bond_coeff   1   harmonic 3   10  
+bond_coeff   2   harmonic 3   10  
+bond_coeff   3   harmonic 3   10  
+bond_coeff   4   harmonic 3   10  
+
+bond_coeff	 5 	harmonic/shift/cut 5.4	 11.22	 12.72
+bond_coeff	 6 	harmonic/shift/cut 2.7	 11.22	 12.72
+bond_coeff	 7 	harmonic/shift/cut 5.4	 11.22	 12.72
+
+ 
+pair_style lj/cut 25
+# atom-typ1, atom-typ2, energy-well, sigma (bead-diameter), cut-off (distance) 
+pair_coeff  * * 0.24 10 25 
+pair_coeff  11 11 0.24 30 75 
+
+special_bonds lj  0 1 1 angle yes
+
+group anchor type 1
+
+
+variable t equal step
+variable steps equal 200000000
+variable dt_thermo equal 1000000
+variable dt_movie equal 10000000  
+variable dt_restart equal 10000000 
+
+
+group rxnSites type 3 4 5 7 9 10
+
+# bc - bond creation, bb - bond break
+# fix ID group-ID(atom-types) bond/create Nevery itype jtype Rmin bondtype (prob values = fraction seed) (iparam maxbond newType)
+fix bc34 rxnSites bond/create/random 20 3 4 12.72 5 prob 1 ${seed} iparam 1 3 jparam 1 4
+
+# fix ID group-ID bond/break Nevery bondtype Rmax keyword values
+fix bb34 rxnSites bond/break 20 5 12.72 prob 1 ${seed}
+variable v_bc34 equal f_bc34[2]  
+variable v_bb34 equal f_bb34[2] 
+# wb1 - write bond data
+fix wb1 all print ${dt_thermo} "$t ${v_bc34} ${v_bb34}" file BondData_pY_SH2_${fName}.dat screen no
+
+fix bc57 rxnSites bond/create/random 20 5 7 12.72 6 prob 1 ${seed} iparam 1 5 jparam 1 7
+fix bb57 rxnSites bond/break 20 6 12.72 prob 1 ${seed}
+variable v_bc57 equal f_bc57[2]  
+variable v_bb57 equal f_bb57[2] 
+fix wb2 all print ${dt_thermo} "$t ${v_bc57} ${v_bb57}" file BondData_SH3_PRM_${fName}.dat screen no
+
+fix bc910 rxnSites bond/create/random 20 9 10 12.72 7 prob 1 ${seed} iparam 1 9 jparam 1 10
+fix bb910 rxnSites bond/break 20 7 12.72 prob 1 ${seed}
+variable v_bc910 equal f_bc910[2]  
+variable v_bb910 equal f_bb910[2] 
+fix wb3 all print ${dt_thermo} "$t ${v_bc910} ${v_bb910}" file BondData_VCA_Arp_${fName}.dat screen no
+
+
+thermo_style    custom step epair pe ke ebond eangle temp bonds 
+thermo          ${dt_thermo}
+fix saveThermo all print ${dt_thermo} "$t $(temp) $(ke) $(pe) $(epair) $(ebond) $(eangle) $(bonds)" file Thermo_${fName}.dat title "# Steps Temp KinEng PotEng Epair Ebond Eangle Bonds" screen no
+
+############################ Langevin Dynamics ###############################
+fix fxlan all langevin $T $T 500 ${seed}
+fix fxnve all nve 
+
+fix fxlan2 anchor langevin $T $T 50 ${seed}
+fix fxnve2 anchor nve 
+fix             confine2 anchor setforce NULL NULL 0.0
+velocity        anchor set NULL NULL 0.0
+
+comm_style tiled
+fix fxbal all balance 1000 1.1 rcb
+
+timestep 30
+
+dump coor all custom ${dt_movie} traj_${fName}.dump id type mol mass x y z xu yu zu 
+
+restart ${dt_restart} ${fName}_tp_*.restart
+run ${steps}
+write_restart final_state_${fName}.restart

@@ -1,0 +1,26 @@
+tolerance  15      # minimal distance between atoms in different molecules
+                    # (you should also consider changing the "discale" 
+                    #  parameter.  I think discale=1.0 by default.)
+seed       456  # seed for random number generator
+#sidemax 5000
+
+# The file type of input and output files is XYZ
+filetype xyz
+
+# The name of the output file
+output  IC_nck_nw_arp.xyz
+
+structure Nck_mono.xyz
+  number 240
+  inside box  -230  -230  105  230 230 290
+end structure
+
+structure NWASP_mono.xyz
+  number 120
+  inside box  -230  -230  105  230 230 290
+end structure
+
+structure Arp23_mono.xyz
+  number 60
+  inside box  -230  -230  105  230 230 290
+end structure

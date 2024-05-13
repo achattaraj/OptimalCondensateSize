@@ -1,0 +1,24 @@
+Arp23 {
+
+write_once("Data Masses") { 
+@atom:Arp  450
+@atom:arpL  20000
+} 
+
+write("Data Atoms") { 
+$atom:1 $mol:. @atom:Arp 0 0 0 0
+$atom:2 $mol:. @atom:arpL 0 0 0 0
+$atom:3 $mol:. @atom:Arp 0 0 0 0
+} 
+
+write("Data Bonds") { 
+$bond:b1    @bond:Bond   $atom:1  $atom:2
+$bond:b2    @bond:Bond   $atom:2  $atom:3
+} 
+
+write("Data Angles") { 
+$angle:a1    @angle:Angle   $atom:1  $atom:2  $atom:3
+} 
+
+} 
+#Arp23

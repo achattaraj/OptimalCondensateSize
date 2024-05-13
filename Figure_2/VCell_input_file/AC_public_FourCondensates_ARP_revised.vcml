@@ -1,0 +1,2167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This biomodel was generated in VCML Version Rel_Version_7.5.0_build_62.2-->
+<vcml xmlns="http://sourceforge.net/projects/vcell/vcml" Version="Rel_Version_7.5.0_build_62.2">
+  <BioModel Name="AC_public_FourCondensates_ARP_revised">
+    <Model Name="model">
+      <ModelParameters>
+        <Parameter Name="k_rxn" Role="user defined" Unit="tbd">0.001</Parameter>
+        <Parameter Name="k_transport" Role="user defined" Unit="s-1">100.0</Parameter>
+      </ModelParameters>
+      <Compound Name="s0" />
+      <Compound Name="s1" />
+      <Compound Name="s2" />
+      <Compound Name="s3" />
+      <Compound Name="s4" />
+      <Compound Name="s5" />
+      <Compound Name="s6" />
+      <Feature Name="c1" KeyValue="255314467" />
+      <Feature Name="c3" KeyValue="255314469" />
+      <Feature Name="c4" KeyValue="255314471" />
+      <Feature Name="c2" KeyValue="255314463" />
+      <Feature Name="cyt" KeyValue="255314465" />
+      <Membrane MembraneVoltage="Voltage_cm1" Name="cm1" KeyValue="255314473" />
+      <Membrane MembraneVoltage="Voltage_cm2" Name="cm2" KeyValue="255314475" />
+      <Membrane MembraneVoltage="Voltage_cm3" Name="cm3" KeyValue="255314477" />
+      <Membrane MembraneVoltage="Voltage_cm4" Name="cm4" KeyValue="255314479" />
+      <LocalizedCompound Name="GA" CompoundRef="s0" Structure="cyt" OverrideName="true" KeyValue="255314481" />
+      <LocalizedCompound Name="FA" CompoundRef="s1" Structure="cyt" OverrideName="true" KeyValue="255314482" />
+      <LocalizedCompound Name="arp_cyt" CompoundRef="s2" Structure="cyt" OverrideName="true" KeyValue="255314483" />
+      <LocalizedCompound Name="arp_cm1" CompoundRef="s3" Structure="cm1" OverrideName="true" KeyValue="255314484" />
+      <LocalizedCompound Name="arp_cm2" CompoundRef="s4" Structure="cm2" OverrideName="true" KeyValue="255314485" />
+      <LocalizedCompound Name="arp_cm3" CompoundRef="s5" Structure="cm3" OverrideName="true" KeyValue="255314486" />
+      <LocalizedCompound Name="arp_cm4" CompoundRef="s6" Structure="cm4" OverrideName="true" KeyValue="255314487" />
+      <SimpleReaction Structure="cyt" Name="r0" Reversible="true" FluxOption="MolecularOnly" KeyValue="255314488">
+        <Reactant LocalizedCompoundRef="GA" Stoichiometry="1" KeyValue="255314489" />
+        <Product LocalizedCompoundRef="FA" Stoichiometry="1" KeyValue="255314490" />
+        <Modifier LocalizedCompoundRef="arp_cyt" />
+        <Kinetics KineticsType="GeneralKinetics">
+          <Parameter Name="J" Role="reaction rate" Unit="uM.s-1">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <SimpleReaction Structure="cyt" Name="r1" Reversible="false" FluxOption="MolecularOnly" KeyValue="255314492">
+        <Reactant LocalizedCompoundRef="FA" Stoichiometry="1" KeyValue="255314493" />
+        <Product LocalizedCompoundRef="GA" Stoichiometry="1" KeyValue="255314494" />
+        <Kinetics KineticsType="MassAction">
+          <Parameter Name="J" Role="reaction rate" Unit="uM.s-1">((Kf * FA) - (Kr * GA))</Parameter>
+          <Parameter Name="Kf" Role="forward rate constant" Unit="s-1">1.0</Parameter>
+          <Parameter Name="Kr" Role="reverse rate constant" Unit="s-1">0.0</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <SimpleReaction Structure="cm1" Name="r2" Reversible="false" FluxOption="MolecularOnly" KeyValue="255314495">
+        <Reactant LocalizedCompoundRef="arp_cm1" Stoichiometry="1" KeyValue="255314496" />
+        <Product LocalizedCompoundRef="arp_cyt" Stoichiometry="1" KeyValue="255314497" />
+        <Kinetics KineticsType="MassAction">
+          <Parameter Name="J" Role="reaction rate" Unit="molecules.um-2.s-1">((Kf * arp_cm1) - (Kr * arp_cyt))</Parameter>
+          <Parameter Name="I" Role="inward current density" Unit="pA.um-2">0.0</Parameter>
+          <Parameter Name="netValence" Role="net charge valence" Unit="1">1.0</Parameter>
+          <Parameter Name="Kf" Role="forward rate constant" Unit="s-1">k_transport</Parameter>
+          <Parameter Name="Kr" Role="reverse rate constant" Unit="molecules.um-2.s-1.uM-1">0.0</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <SimpleReaction Structure="cm2" Name="r3" Reversible="false" FluxOption="MolecularOnly" KeyValue="255314498">
+        <Reactant LocalizedCompoundRef="arp_cm2" Stoichiometry="1" KeyValue="255314499" />
+        <Product LocalizedCompoundRef="arp_cyt" Stoichiometry="1" KeyValue="255314500" />
+        <Kinetics KineticsType="MassAction">
+          <Parameter Name="J" Role="reaction rate" Unit="molecules.um-2.s-1">((Kf * arp_cm2) - (Kr * arp_cyt))</Parameter>
+          <Parameter Name="I" Role="inward current density" Unit="pA.um-2">0.0</Parameter>
+          <Parameter Name="netValence" Role="net charge valence" Unit="1">1.0</Parameter>
+          <Parameter Name="Kf" Role="forward rate constant" Unit="s-1">k_transport</Parameter>
+          <Parameter Name="Kr" Role="reverse rate constant" Unit="molecules.um-2.s-1.uM-1">0.0</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <SimpleReaction Structure="cm3" Name="r4" Reversible="false" FluxOption="MolecularOnly" KeyValue="255314501">
+        <Reactant LocalizedCompoundRef="arp_cm3" Stoichiometry="1" KeyValue="255314502" />
+        <Product LocalizedCompoundRef="arp_cyt" Stoichiometry="1" KeyValue="255314503" />
+        <Kinetics KineticsType="MassAction">
+          <Parameter Name="J" Role="reaction rate" Unit="molecules.um-2.s-1">((Kf * arp_cm3) - (Kr * arp_cyt))</Parameter>
+          <Parameter Name="I" Role="inward current density" Unit="pA.um-2">0.0</Parameter>
+          <Parameter Name="netValence" Role="net charge valence" Unit="1">1.0</Parameter>
+          <Parameter Name="Kf" Role="forward rate constant" Unit="s-1">k_transport</Parameter>
+          <Parameter Name="Kr" Role="reverse rate constant" Unit="molecules.um-2.s-1.uM-1">0.0</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <SimpleReaction Structure="cm4" Name="r5" Reversible="false" FluxOption="MolecularOnly" KeyValue="255314504">
+        <Reactant LocalizedCompoundRef="arp_cm4" Stoichiometry="1" KeyValue="255314505" />
+        <Product LocalizedCompoundRef="arp_cyt" Stoichiometry="1" KeyValue="255314506" />
+        <Kinetics KineticsType="MassAction">
+          <Parameter Name="J" Role="reaction rate" Unit="molecules.um-2.s-1">((Kf * arp_cm4) - (Kr * arp_cyt))</Parameter>
+          <Parameter Name="I" Role="inward current density" Unit="pA.um-2">0.0</Parameter>
+          <Parameter Name="netValence" Role="net charge valence" Unit="1">1.0</Parameter>
+          <Parameter Name="Kf" Role="forward rate constant" Unit="s-1">k_transport</Parameter>
+          <Parameter Name="Kr" Role="reverse rate constant" Unit="molecules.um-2.s-1.uM-1">0.0</Parameter>
+        </Kinetics>
+      </SimpleReaction>
+      <Diagram Name="c1" Structure="cyt">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="m0" Structure="cm1">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="c2" Structure="c1">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="m1" Structure="cm2">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="c0" Structure="c2">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="m2" Structure="cm3">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="c3" Structure="c3">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="m0" Structure="cm4">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Diagram Name="c0" Structure="c4">
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r1" LocationX="88" LocationY="110" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r0" LocationX="92" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="FA" LocationX="89" LocationY="146" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r4" LocationX="14" LocationY="110" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm2" LocationX="37" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm4" LocationX="22" LocationY="111" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm1" LocationX="52" LocationY="103" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r5" LocationX="14" LocationY="113" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="GA" LocationX="75" LocationY="62" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cyt" LocationX="161" LocationY="100" />
+        <LocalizedCompoundShape NodeReferenceModeAttrTag="full" LocalizedCompoundRef="arp_cm3" LocationX="48" LocationY="104" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r3" LocationX="14" LocationY="113" />
+        <SimpleReactionShape NodeReferenceModeAttrTag="full" SimpleReactionRef="r2" LocationX="14" LocationY="108" />
+      </Diagram>
+      <Version Name="model" KeyValue="255314454" BranchId="255314279" Archived="0" Date="21-Apr-2023 03:23:37" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+      </Version>
+      <ModelUnitSystem VolumeSubstanceUnit="uM.um3" MembraneSubstanceUnit="molecules" LumpedReactionSubstanceUnit="molecules" VolumeUnit="um3" AreaUnit="um2" LengthUnit="um" TimeUnit="s" />
+    </Model>
+    <SimulationSpec Name="Ref" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation />
+      <Geometry Name="Geometry1435053609" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="cond4" Handle="4" Type="Analytical" KeyValue="270891123">
+          <AnalyticExpression>((((x - 14.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (2.519 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond3" Handle="3" Type="Analytical" KeyValue="270891124">
+          <AnalyticExpression>((((x - 5.0) ^ 2.0) + ((y - 14.0) ^ 2.0) + (z ^ 2.0)) &lt; (2.519 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond2" Handle="2" Type="Analytical" KeyValue="270891125">
+          <AnalyticExpression>((((x - 15.0) ^ 2.0) + ((y - 15.0) ^ 2.0) + (z ^ 2.0)) &lt; (2.519 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond1" Handle="1" Type="Analytical" KeyValue="270891126">
+          <AnalyticExpression>((((x - 5.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (2.519 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cyt" Handle="0" Type="Analytical" KeyValue="270891127">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="cond1_cyt_membrane" SubVolume1Ref="cond1" SubVolume2Ref="cyt" KeyValue="270891128" />
+        <SurfaceClass Name="cond4_cyt_membrane" SubVolume1Ref="cond4" SubVolume2Ref="cyt" KeyValue="270891129" />
+        <SurfaceClass Name="cond3_cyt_membrane" SubVolume1Ref="cond3" SubVolume2Ref="cyt" KeyValue="270891130" />
+        <SurfaceClass Name="cond2_cyt_membrane" SubVolume1Ref="cond2" SubVolume2Ref="cyt" KeyValue="270891131" />
+        <SurfaceDescription NumSamplesX="101" NumSamplesY="101" NumSamplesZ="101" CutoffFrequency="0.3">
+          <VolumeRegion Name="cyt0" RegionID="0" SubVolume="cyt" Size="3865.64" Unit="um3" />
+          <VolumeRegion Name="cond11" RegionID="1" SubVolume="cond1" Size="33.59" Unit="um3" />
+          <VolumeRegion Name="cond42" RegionID="2" SubVolume="cond4" Size="33.59" Unit="um3" />
+          <VolumeRegion Name="cond33" RegionID="3" SubVolume="cond3" Size="33.59" Unit="um3" />
+          <VolumeRegion Name="cond24" RegionID="4" SubVolume="cond2" Size="33.59" Unit="um3" />
+          <MembraneRegion Name="membrane_cyt0_cond11" VolumeRegion1="cond11" VolumeRegion2="cyt0" Size="39.531406935698534" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond42" VolumeRegion1="cond42" VolumeRegion2="cyt0" Size="39.531406935698534" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond33" VolumeRegion1="cond33" VolumeRegion2="cyt0" Size="39.53140693569853" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond24" VolumeRegion1="cond24" VolumeRegion2="cyt0" Size="39.531406935698485" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry1435053609" KeyValue="270891120" BranchId="255314429" Archived="0" Date="19-Apr-2024 13:47:26" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="c1" GeometryClass="cond1" SubVolume="cond1" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c3" GeometryClass="cond3" SubVolume="cond3" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c4" GeometryClass="cond4" SubVolume="cond4" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c2" GeometryClass="cond2" SubVolume="cond2" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="cyt" GeometryClass="cyt" SubVolume="cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="cm1" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond1_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm2" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond2_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm3" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond3_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm4" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond4_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm1" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>627.0</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm2" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>627.0</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm3" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>627.0</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm4" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>627.0</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r3" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r4" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r5" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Application0_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm1">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm2">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm3">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm4">1.0</Constant>
+        <Constant Name="arp_cm1_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm1_init_molecules_um_2">627.0</Constant>
+        <Constant Name="arp_cm2_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm2_init_molecules_um_2">627.0</Constant>
+        <Constant Name="arp_cm3_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm3_init_molecules_um_2">627.0</Constant>
+        <Constant Name="arp_cm4_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm4_init_molecules_um_2">627.0</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="k_transport">100.0</Constant>
+        <Constant Name="Kf_r1">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r1">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="Kr_r3">0.0</Constant>
+        <Constant Name="Kr_r4">0.0</Constant>
+        <Constant Name="Kr_r5">0.0</Constant>
+        <Constant Name="netValence_r2">1.0</Constant>
+        <Constant Name="netValence_r3">1.0</Constant>
+        <Constant Name="netValence_r4">1.0</Constant>
+        <Constant Name="netValence_r5">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_cm1">0.0</Constant>
+        <Constant Name="Voltage_cm2">0.0</Constant>
+        <Constant Name="Voltage_cm3">0.0</Constant>
+        <Constant Name="Voltage_cm4">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c1">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c2">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c3">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c4">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm1" Domain="cond1_cyt_membrane" />
+        <MembraneVariable Name="arp_cm2" Domain="cond2_cyt_membrane" />
+        <MembraneVariable Name="arp_cm3" Domain="cond3_cyt_membrane" />
+        <MembraneVariable Name="arp_cm4" Domain="cond4_cyt_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="cyt" />
+        <VolumeVariable Name="FA" Domain="cyt" />
+        <VolumeVariable Name="GA" Domain="cyt" />
+        <Function Name="J_r0" Domain="cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r1" Domain="cyt">((Kf_r1 * FA) - (Kr_r1 * GA))</Function>
+        <Function Name="J_r2" Domain="cond1_cyt_membrane">((Kf_r2 * arp_cm1) - (Kr_r2 * arp_cyt))</Function>
+        <Function Name="J_r3" Domain="cond2_cyt_membrane">((Kf_r3 * arp_cm2) - (Kr_r3 * arp_cyt))</Function>
+        <Function Name="J_r4" Domain="cond3_cyt_membrane">((Kf_r4 * arp_cm3) - (Kr_r4 * arp_cyt))</Function>
+        <Function Name="J_r5" Domain="cond4_cyt_membrane">((Kf_r5 * arp_cm4) - (Kr_r5 * arp_cyt))</Function>
+        <Function Name="Kf_r2" Domain="cond1_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r3" Domain="cond2_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r4" Domain="cond3_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r5" Domain="cond4_cyt_membrane">k_transport</Function>
+        <Function Name="KFlux_cm1_cyt" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm2_cyt" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm3_cyt" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm4_cyt" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="Size_c1" Domain="cond1">(VolumePerUnitVolume_c1 * vcRegionVolume('cond1'))</Function>
+        <Function Name="Size_c2" Domain="cond2">(VolumePerUnitVolume_c2 * vcRegionVolume('cond2'))</Function>
+        <Function Name="Size_c3" Domain="cond3">(VolumePerUnitVolume_c3 * vcRegionVolume('cond3'))</Function>
+        <Function Name="Size_c4" Domain="cond4">(VolumePerUnitVolume_c4 * vcRegionVolume('cond4'))</Function>
+        <Function Name="Size_cm1" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 * vcRegionArea('cond1_cyt_membrane'))</Function>
+        <Function Name="Size_cm2" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 * vcRegionArea('cond2_cyt_membrane'))</Function>
+        <Function Name="Size_cm3" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 * vcRegionArea('cond3_cyt_membrane'))</Function>
+        <Function Name="Size_cm4" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 * vcRegionArea('cond4_cyt_membrane'))</Function>
+        <Function Name="Size_cyt" Domain="cyt">(VolumePerUnitVolume_cyt * vcRegionVolume('cyt'))</Function>
+        <Function Name="sobj_cond11_cyt0_size" Domain="cond1_cyt_membrane">vcRegionArea('cond1_cyt_membrane')</Function>
+        <Function Name="sobj_cond24_cyt0_size" Domain="cond2_cyt_membrane">vcRegionArea('cond2_cyt_membrane')</Function>
+        <Function Name="sobj_cond33_cyt0_size" Domain="cond3_cyt_membrane">vcRegionArea('cond3_cyt_membrane')</Function>
+        <Function Name="sobj_cond42_cyt0_size" Domain="cond4_cyt_membrane">vcRegionArea('cond4_cyt_membrane')</Function>
+        <Function Name="vobj_cond11_size" Domain="cond1">vcRegionVolume('cond1')</Function>
+        <Function Name="vobj_cond24_size" Domain="cond2">vcRegionVolume('cond2')</Function>
+        <Function Name="vobj_cond33_size" Domain="cond3">vcRegionVolume('cond3')</Function>
+        <Function Name="vobj_cond42_size" Domain="cond4">vcRegionVolume('cond4')</Function>
+        <Function Name="vobj_cyt0_size" Domain="cyt">vcRegionVolume('cyt')</Function>
+        <CompartmentSubDomain Name="cond4">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond3">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond2">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond1">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r0 + J_r1)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r0 - J_r1)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="cond1_cyt_membrane" InsideCompartment="cond1" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm1" SolutionType="Unknown">
+            <Rate>- J_r2</Rate>
+            <Diffusion>arp_cm1_diffusionRate</Diffusion>
+            <Initial>arp_cm1_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm1_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r2)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond4_cyt_membrane" InsideCompartment="cond4" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm4" SolutionType="Unknown">
+            <Rate>- J_r5</Rate>
+            <Diffusion>arp_cm4_diffusionRate</Diffusion>
+            <Initial>arp_cm4_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm4_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r5)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond3_cyt_membrane" InsideCompartment="cond3" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm3" SolutionType="Unknown">
+            <Rate>- J_r4</Rate>
+            <Diffusion>arp_cm3_diffusionRate</Diffusion>
+            <Initial>arp_cm3_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm3_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r4)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond2_cyt_membrane" InsideCompartment="cond2" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm2" SolutionType="Unknown">
+            <Rate>- J_r3</Rate>
+            <Diffusion>arp_cm2_diffusionRate</Diffusion>
+            <Initial>arp_cm2_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm2_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r3)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Application0_generated" KeyValue="270891142" BranchId="255314452" Archived="0" Date="19-Apr-2024 13:47:26" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="Cond1_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond2_ROI" ErrorString="" FunctionType="Volume">((((x - 15.0) ^ 2.0) + ((y - 15.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond3_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 14.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond4_ROI" ErrorString="" FunctionType="Volume">((((x - 14.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="GD_10_FD_1">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="20.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="0.5" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="GD_10_FD_1" KeyValue="270892852" BranchId="270890054" Archived="0" Date="19-Apr-2024 14:40:46" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <Simulation Name="FA_D_titration">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides>
+          <Constant Name="FA_diffusionRate" ConstantArraySpec="1000">"0.125", "0.25", "0.5", "0.75", "1.0", "1.33", "2.0", "4.0", "8.0"</Constant>
+        </MathOverrides>
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="FA_D_titration" KeyValue="270892946" BranchId="264902698" Archived="0" Date="19-Apr-2024 14:41:19" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <Simulation Name="GD_10_FD_2">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="20.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="0.5" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides>
+          <Constant Name="FA_diffusionRate">2.0</Constant>
+        </MathOverrides>
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="GD_10_FD_2" KeyValue="270892933" BranchId="270890065" Archived="0" Date="19-Apr-2024 14:41:07" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <Simulation Name="Copy of GD_10_FD_1">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="200.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="10.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="Copy of GD_10_FD_1" KeyValue="271093936" BranchId="271093937" Archived="0" Date="24-Apr-2024 14:00:37" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_cyt0" Type="Volume" subVolume="cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond11" Type="Volume" subVolume="cond1" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond11_cyt0" Type="Surface" subVolumeInside="cond1" regionIdInside="1" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond42" Type="Volume" subVolume="cond4" regionId="2">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond33" Type="Volume" subVolume="cond3" regionId="3">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond24" Type="Volume" subVolume="cond2" regionId="4">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond42_cyt0" Type="Surface" subVolumeInside="cond4" regionIdInside="2" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond33_cyt0" Type="Surface" subVolumeInside="cond3" regionIdInside="3" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond24_cyt0" Type="Surface" subVolumeInside="cond2" regionIdInside="4" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name="Ref" KeyValue="270891144" BranchId="270890006" Archived="0" Date="19-Apr-2024 13:47:26" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <SimulationSpec Name="hS_0.8" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation>(copied from hS_0.6) (copied from Ref)</Annotation>
+      <Geometry Name="Geometry1435053609" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="cond4" Handle="4" Type="Analytical" KeyValue="271071112">
+          <AnalyticExpression>(((((x - 14.0) ^ 2.0) / (2.716 ^ 2.0)) + (((y - 5.0) ^ 2.0) / (2.716 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (2.166 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond3" Handle="3" Type="Analytical" KeyValue="271071113">
+          <AnalyticExpression>(((((x - 5.0) ^ 2.0) / (2.716 ^ 2.0)) + (((y - 14.0) ^ 2.0) / (2.716 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (2.166 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond2" Handle="2" Type="Analytical" KeyValue="271071114">
+          <AnalyticExpression>(((((x - 15.0) ^ 2.0) / (2.716 ^ 2.0)) + (((y - 15.0) ^ 2.0) / (2.716 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (2.166 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond1" Handle="1" Type="Analytical" KeyValue="271071115">
+          <AnalyticExpression>(((((x - 5.0) ^ 2.0) / (2.716 ^ 2.0)) + (((y - 5.0) ^ 2.0) / (2.716 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (2.166 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cyt" Handle="0" Type="Analytical" KeyValue="271071116">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="cond1_cyt_membrane" SubVolume1Ref="cond1" SubVolume2Ref="cyt" KeyValue="271071117" />
+        <SurfaceClass Name="cond4_cyt_membrane" SubVolume1Ref="cond4" SubVolume2Ref="cyt" KeyValue="271071118" />
+        <SurfaceClass Name="cond3_cyt_membrane" SubVolume1Ref="cond3" SubVolume2Ref="cyt" KeyValue="271071119" />
+        <SurfaceClass Name="cond2_cyt_membrane" SubVolume1Ref="cond2" SubVolume2Ref="cyt" KeyValue="271071120" />
+        <SurfaceDescription NumSamplesX="128" NumSamplesY="128" NumSamplesZ="64" CutoffFrequency="0.3">
+          <VolumeRegion Name="cyt0" RegionID="0" SubVolume="cyt" Size="3866.170272023083" Unit="um3" />
+          <VolumeRegion Name="cond11" RegionID="1" SubVolume="cond1" Size="33.44463831784805" Unit="um3" />
+          <VolumeRegion Name="cond42" RegionID="2" SubVolume="cond4" Size="33.47022567061006" Unit="um3" />
+          <VolumeRegion Name="cond33" RegionID="3" SubVolume="cond3" Size="33.47022567061006" Unit="um3" />
+          <VolumeRegion Name="cond24" RegionID="4" SubVolume="cond2" Size="33.44463831784805" Unit="um3" />
+          <MembraneRegion Name="membrane_cyt0_cond11" VolumeRegion1="cond11" VolumeRegion2="cyt0" Size="39.80683498245529" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond42" VolumeRegion1="cond42" VolumeRegion2="cyt0" Size="39.82857057566119" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond33" VolumeRegion1="cond33" VolumeRegion2="cyt0" Size="39.8285645244782" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond24" VolumeRegion1="cond24" VolumeRegion2="cyt0" Size="39.80683498245519" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry1435053609" KeyValue="271071109" BranchId="255314429" Archived="0" Date="23-Apr-2024 16:45:45" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="c1" GeometryClass="cond1" SubVolume="cond1" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c3" GeometryClass="cond3" SubVolume="cond3" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c4" GeometryClass="cond4" SubVolume="cond4" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c2" GeometryClass="cond2" SubVolume="cond2" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="cyt" GeometryClass="cyt" SubVolume="cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="cm1" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond1_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm2" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond2_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm3" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond3_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm4" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond4_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm1" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>621.31</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm2" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>621.31</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm3" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>621.31</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm4" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>621.31</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r3" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r4" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r5" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Copy of hS_0.6_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm1">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm2">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm3">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm4">1.0</Constant>
+        <Constant Name="arp_cm1_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm1_init_molecules_um_2">621.31</Constant>
+        <Constant Name="arp_cm2_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm2_init_molecules_um_2">621.31</Constant>
+        <Constant Name="arp_cm3_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm3_init_molecules_um_2">621.31</Constant>
+        <Constant Name="arp_cm4_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm4_init_molecules_um_2">621.31</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="k_transport">100.0</Constant>
+        <Constant Name="Kf_r1">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r1">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="Kr_r3">0.0</Constant>
+        <Constant Name="Kr_r4">0.0</Constant>
+        <Constant Name="Kr_r5">0.0</Constant>
+        <Constant Name="netValence_r2">1.0</Constant>
+        <Constant Name="netValence_r3">1.0</Constant>
+        <Constant Name="netValence_r4">1.0</Constant>
+        <Constant Name="netValence_r5">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_cm1">0.0</Constant>
+        <Constant Name="Voltage_cm2">0.0</Constant>
+        <Constant Name="Voltage_cm3">0.0</Constant>
+        <Constant Name="Voltage_cm4">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c1">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c2">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c3">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c4">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm1" Domain="cond1_cyt_membrane" />
+        <MembraneVariable Name="arp_cm2" Domain="cond2_cyt_membrane" />
+        <MembraneVariable Name="arp_cm3" Domain="cond3_cyt_membrane" />
+        <MembraneVariable Name="arp_cm4" Domain="cond4_cyt_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="cyt" />
+        <VolumeVariable Name="FA" Domain="cyt" />
+        <VolumeVariable Name="GA" Domain="cyt" />
+        <Function Name="J_r0" Domain="cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r1" Domain="cyt">((Kf_r1 * FA) - (Kr_r1 * GA))</Function>
+        <Function Name="J_r2" Domain="cond1_cyt_membrane">((Kf_r2 * arp_cm1) - (Kr_r2 * arp_cyt))</Function>
+        <Function Name="J_r3" Domain="cond2_cyt_membrane">((Kf_r3 * arp_cm2) - (Kr_r3 * arp_cyt))</Function>
+        <Function Name="J_r4" Domain="cond3_cyt_membrane">((Kf_r4 * arp_cm3) - (Kr_r4 * arp_cyt))</Function>
+        <Function Name="J_r5" Domain="cond4_cyt_membrane">((Kf_r5 * arp_cm4) - (Kr_r5 * arp_cyt))</Function>
+        <Function Name="Kf_r2" Domain="cond1_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r3" Domain="cond2_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r4" Domain="cond3_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r5" Domain="cond4_cyt_membrane">k_transport</Function>
+        <Function Name="KFlux_cm1_cyt" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm2_cyt" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm3_cyt" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm4_cyt" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="Size_c1" Domain="cond1">(VolumePerUnitVolume_c1 * vcRegionVolume('cond1'))</Function>
+        <Function Name="Size_c2" Domain="cond2">(VolumePerUnitVolume_c2 * vcRegionVolume('cond2'))</Function>
+        <Function Name="Size_c3" Domain="cond3">(VolumePerUnitVolume_c3 * vcRegionVolume('cond3'))</Function>
+        <Function Name="Size_c4" Domain="cond4">(VolumePerUnitVolume_c4 * vcRegionVolume('cond4'))</Function>
+        <Function Name="Size_cm1" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 * vcRegionArea('cond1_cyt_membrane'))</Function>
+        <Function Name="Size_cm2" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 * vcRegionArea('cond2_cyt_membrane'))</Function>
+        <Function Name="Size_cm3" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 * vcRegionArea('cond3_cyt_membrane'))</Function>
+        <Function Name="Size_cm4" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 * vcRegionArea('cond4_cyt_membrane'))</Function>
+        <Function Name="Size_cyt" Domain="cyt">(VolumePerUnitVolume_cyt * vcRegionVolume('cyt'))</Function>
+        <Function Name="sobj_cond11_cyt0_size" Domain="cond1_cyt_membrane">vcRegionArea('cond1_cyt_membrane')</Function>
+        <Function Name="sobj_cond24_cyt0_size" Domain="cond2_cyt_membrane">vcRegionArea('cond2_cyt_membrane')</Function>
+        <Function Name="sobj_cond33_cyt0_size" Domain="cond3_cyt_membrane">vcRegionArea('cond3_cyt_membrane')</Function>
+        <Function Name="sobj_cond42_cyt0_size" Domain="cond4_cyt_membrane">vcRegionArea('cond4_cyt_membrane')</Function>
+        <Function Name="vobj_cond11_size" Domain="cond1">vcRegionVolume('cond1')</Function>
+        <Function Name="vobj_cond24_size" Domain="cond2">vcRegionVolume('cond2')</Function>
+        <Function Name="vobj_cond33_size" Domain="cond3">vcRegionVolume('cond3')</Function>
+        <Function Name="vobj_cond42_size" Domain="cond4">vcRegionVolume('cond4')</Function>
+        <Function Name="vobj_cyt0_size" Domain="cyt">vcRegionVolume('cyt')</Function>
+        <CompartmentSubDomain Name="cond4">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond3">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond2">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond1">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r0 + J_r1)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r0 - J_r1)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="cond1_cyt_membrane" InsideCompartment="cond1" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm1" SolutionType="Unknown">
+            <Rate>- J_r2</Rate>
+            <Diffusion>arp_cm1_diffusionRate</Diffusion>
+            <Initial>arp_cm1_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm1_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r2)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond4_cyt_membrane" InsideCompartment="cond4" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm4" SolutionType="Unknown">
+            <Rate>- J_r5</Rate>
+            <Diffusion>arp_cm4_diffusionRate</Diffusion>
+            <Initial>arp_cm4_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm4_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r5)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond3_cyt_membrane" InsideCompartment="cond3" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm3" SolutionType="Unknown">
+            <Rate>- J_r4</Rate>
+            <Diffusion>arp_cm3_diffusionRate</Diffusion>
+            <Initial>arp_cm3_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm3_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r4)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond2_cyt_membrane" InsideCompartment="cond2" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm2" SolutionType="Unknown">
+            <Rate>- J_r3</Rate>
+            <Diffusion>arp_cm2_diffusionRate</Diffusion>
+            <Initial>arp_cm2_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm2_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r3)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Copy of hS_0.6_generated" KeyValue="271071525" BranchId="271071132" Archived="0" Date="23-Apr-2024 17:09:03" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="Cond1_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond2_ROI" ErrorString="" FunctionType="Volume">((((x - 15.0) ^ 2.0) + ((y - 15.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond3_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 14.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond4_ROI" ErrorString="" FunctionType="Volume">((((x - 14.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="GD_10_FD_1_hS_0.8">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="GD_10_FD_1_hS_0.8" KeyValue="271071552" BranchId="271071161" Archived="0" Date="23-Apr-2024 17:09:04" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_cyt0" Type="Volume" subVolume="cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond33" Type="Volume" subVolume="cond3" regionId="3">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond24" Type="Volume" subVolume="cond2" regionId="4">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond33_cyt0" Type="Surface" subVolumeInside="cond3" regionIdInside="3" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond24_cyt0" Type="Surface" subVolumeInside="cond2" regionIdInside="4" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond11" Type="Volume" subVolume="cond1" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond42" Type="Volume" subVolume="cond4" regionId="2">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond11_cyt0" Type="Surface" subVolumeInside="cond1" regionIdInside="1" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond42_cyt0" Type="Surface" subVolumeInside="cond4" regionIdInside="2" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name="hS_0.8" KeyValue="271071527" BranchId="271071135" Archived="0" Date="23-Apr-2024 17:09:04" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+        <Annotation>(copied from hS_0.6) (copied from Ref)</Annotation>
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <SimulationSpec Name="hS_0.6" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation>(copied from hS_0.8) (copied from hS_0.6) (copied from Ref)</Annotation>
+      <Geometry Name="Geometry1435053609" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="cond4" Handle="4" Type="Analytical" KeyValue="271071705">
+          <AnalyticExpression>(((((x - 14.0) ^ 2.0) / (2.987 ^ 2.0)) + (((y - 5.0) ^ 2.0) / (2.987 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.792 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond3" Handle="3" Type="Analytical" KeyValue="271071706">
+          <AnalyticExpression>(((((x - 5.0) ^ 2.0) / (2.987 ^ 2.0)) + (((y - 14.0) ^ 2.0) / (2.987 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.792 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond2" Handle="2" Type="Analytical" KeyValue="271071707">
+          <AnalyticExpression>(((((x - 15.0) ^ 2.0) / (2.987 ^ 2.0)) + (((y - 15.0) ^ 2.0) / (2.987 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.792 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond1" Handle="1" Type="Analytical" KeyValue="271071708">
+          <AnalyticExpression>(((((x - 5.0) ^ 2.0) / (2.987 ^ 2.0)) + (((y - 5.0) ^ 2.0) / (2.987 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.792 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cyt" Handle="0" Type="Analytical" KeyValue="271071709">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="cond1_cyt_membrane" SubVolume1Ref="cond1" SubVolume2Ref="cyt" KeyValue="271071710" />
+        <SurfaceClass Name="cond4_cyt_membrane" SubVolume1Ref="cond4" SubVolume2Ref="cyt" KeyValue="271071711" />
+        <SurfaceClass Name="cond3_cyt_membrane" SubVolume1Ref="cond3" SubVolume2Ref="cyt" KeyValue="271071712" />
+        <SurfaceClass Name="cond2_cyt_membrane" SubVolume1Ref="cond2" SubVolume2Ref="cyt" KeyValue="271071713" />
+        <SurfaceDescription NumSamplesX="128" NumSamplesY="128" NumSamplesZ="64" CutoffFrequency="0.3">
+          <VolumeRegion Name="cyt0" RegionID="0" SubVolume="cyt" Size="3865.9340810745107" Unit="um3" />
+          <VolumeRegion Name="cond11" RegionID="1" SubVolume="cond1" Size="33.52927340775316" Unit="um3" />
+          <VolumeRegion Name="cond42" RegionID="2" SubVolume="cond4" Size="33.50368605499115" Unit="um3" />
+          <VolumeRegion Name="cond33" RegionID="3" SubVolume="cond3" Size="33.50368605499115" Unit="um3" />
+          <VolumeRegion Name="cond24" RegionID="4" SubVolume="cond2" Size="33.52927340775316" Unit="um3" />
+          <MembraneRegion Name="membrane_cyt0_cond11" VolumeRegion1="cond11" VolumeRegion2="cyt0" Size="41.48432515413379" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond42" VolumeRegion1="cond42" VolumeRegion2="cyt0" Size="41.451826206707906" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond33" VolumeRegion1="cond33" VolumeRegion2="cyt0" Size="41.45173624162011" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond24" VolumeRegion1="cond24" VolumeRegion2="cyt0" Size="41.4843251541338" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry1435053609" KeyValue="271071702" BranchId="255314429" Archived="0" Date="23-Apr-2024 17:14:51" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="c1" GeometryClass="cond1" SubVolume="cond1" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c3" GeometryClass="cond3" SubVolume="cond3" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c4" GeometryClass="cond4" SubVolume="cond4" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c2" GeometryClass="cond2" SubVolume="cond2" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="cyt" GeometryClass="cyt" SubVolume="cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="cm1" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond1_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm2" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond2_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm3" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond3_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm4" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond4_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm1" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>596.55</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm2" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>596.55</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm3" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>596.55</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm4" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>596.55</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r3" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r4" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r5" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Copy of hS_0.8_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm1">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm2">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm3">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm4">1.0</Constant>
+        <Constant Name="arp_cm1_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm1_init_molecules_um_2">596.55</Constant>
+        <Constant Name="arp_cm2_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm2_init_molecules_um_2">596.55</Constant>
+        <Constant Name="arp_cm3_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm3_init_molecules_um_2">596.55</Constant>
+        <Constant Name="arp_cm4_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm4_init_molecules_um_2">596.55</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="k_transport">100.0</Constant>
+        <Constant Name="Kf_r1">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r1">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="Kr_r3">0.0</Constant>
+        <Constant Name="Kr_r4">0.0</Constant>
+        <Constant Name="Kr_r5">0.0</Constant>
+        <Constant Name="netValence_r2">1.0</Constant>
+        <Constant Name="netValence_r3">1.0</Constant>
+        <Constant Name="netValence_r4">1.0</Constant>
+        <Constant Name="netValence_r5">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_cm1">0.0</Constant>
+        <Constant Name="Voltage_cm2">0.0</Constant>
+        <Constant Name="Voltage_cm3">0.0</Constant>
+        <Constant Name="Voltage_cm4">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c1">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c2">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c3">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c4">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm1" Domain="cond1_cyt_membrane" />
+        <MembraneVariable Name="arp_cm2" Domain="cond2_cyt_membrane" />
+        <MembraneVariable Name="arp_cm3" Domain="cond3_cyt_membrane" />
+        <MembraneVariable Name="arp_cm4" Domain="cond4_cyt_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="cyt" />
+        <VolumeVariable Name="FA" Domain="cyt" />
+        <VolumeVariable Name="GA" Domain="cyt" />
+        <Function Name="J_r0" Domain="cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r1" Domain="cyt">((Kf_r1 * FA) - (Kr_r1 * GA))</Function>
+        <Function Name="J_r2" Domain="cond1_cyt_membrane">((Kf_r2 * arp_cm1) - (Kr_r2 * arp_cyt))</Function>
+        <Function Name="J_r3" Domain="cond2_cyt_membrane">((Kf_r3 * arp_cm2) - (Kr_r3 * arp_cyt))</Function>
+        <Function Name="J_r4" Domain="cond3_cyt_membrane">((Kf_r4 * arp_cm3) - (Kr_r4 * arp_cyt))</Function>
+        <Function Name="J_r5" Domain="cond4_cyt_membrane">((Kf_r5 * arp_cm4) - (Kr_r5 * arp_cyt))</Function>
+        <Function Name="Kf_r2" Domain="cond1_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r3" Domain="cond2_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r4" Domain="cond3_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r5" Domain="cond4_cyt_membrane">k_transport</Function>
+        <Function Name="KFlux_cm1_cyt" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm2_cyt" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm3_cyt" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm4_cyt" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="Size_c1" Domain="cond1">(VolumePerUnitVolume_c1 * vcRegionVolume('cond1'))</Function>
+        <Function Name="Size_c2" Domain="cond2">(VolumePerUnitVolume_c2 * vcRegionVolume('cond2'))</Function>
+        <Function Name="Size_c3" Domain="cond3">(VolumePerUnitVolume_c3 * vcRegionVolume('cond3'))</Function>
+        <Function Name="Size_c4" Domain="cond4">(VolumePerUnitVolume_c4 * vcRegionVolume('cond4'))</Function>
+        <Function Name="Size_cm1" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 * vcRegionArea('cond1_cyt_membrane'))</Function>
+        <Function Name="Size_cm2" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 * vcRegionArea('cond2_cyt_membrane'))</Function>
+        <Function Name="Size_cm3" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 * vcRegionArea('cond3_cyt_membrane'))</Function>
+        <Function Name="Size_cm4" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 * vcRegionArea('cond4_cyt_membrane'))</Function>
+        <Function Name="Size_cyt" Domain="cyt">(VolumePerUnitVolume_cyt * vcRegionVolume('cyt'))</Function>
+        <Function Name="sobj_cond11_cyt0_size" Domain="cond1_cyt_membrane">vcRegionArea('cond1_cyt_membrane')</Function>
+        <Function Name="sobj_cond24_cyt0_size" Domain="cond2_cyt_membrane">vcRegionArea('cond2_cyt_membrane')</Function>
+        <Function Name="sobj_cond33_cyt0_size" Domain="cond3_cyt_membrane">vcRegionArea('cond3_cyt_membrane')</Function>
+        <Function Name="sobj_cond42_cyt0_size" Domain="cond4_cyt_membrane">vcRegionArea('cond4_cyt_membrane')</Function>
+        <Function Name="vobj_cond11_size" Domain="cond1">vcRegionVolume('cond1')</Function>
+        <Function Name="vobj_cond24_size" Domain="cond2">vcRegionVolume('cond2')</Function>
+        <Function Name="vobj_cond33_size" Domain="cond3">vcRegionVolume('cond3')</Function>
+        <Function Name="vobj_cond42_size" Domain="cond4">vcRegionVolume('cond4')</Function>
+        <Function Name="vobj_cyt0_size" Domain="cyt">vcRegionVolume('cyt')</Function>
+        <CompartmentSubDomain Name="cond4">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond3">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond2">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond1">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r0 + J_r1)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r0 - J_r1)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="cond1_cyt_membrane" InsideCompartment="cond1" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm1" SolutionType="Unknown">
+            <Rate>- J_r2</Rate>
+            <Diffusion>arp_cm1_diffusionRate</Diffusion>
+            <Initial>arp_cm1_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm1_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r2)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond4_cyt_membrane" InsideCompartment="cond4" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm4" SolutionType="Unknown">
+            <Rate>- J_r5</Rate>
+            <Diffusion>arp_cm4_diffusionRate</Diffusion>
+            <Initial>arp_cm4_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm4_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r5)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond3_cyt_membrane" InsideCompartment="cond3" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm3" SolutionType="Unknown">
+            <Rate>- J_r4</Rate>
+            <Diffusion>arp_cm3_diffusionRate</Diffusion>
+            <Initial>arp_cm3_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm3_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r4)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond2_cyt_membrane" InsideCompartment="cond2" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm2" SolutionType="Unknown">
+            <Rate>- J_r3</Rate>
+            <Diffusion>arp_cm2_diffusionRate</Diffusion>
+            <Initial>arp_cm2_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm2_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r3)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Copy of hS_0.8_generated" KeyValue="271071724" BranchId="271071725" Archived="0" Date="23-Apr-2024 17:14:51" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="Cond1_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond2_ROI" ErrorString="" FunctionType="Volume">((((x - 15.0) ^ 2.0) + ((y - 15.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond3_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 14.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond4_ROI" ErrorString="" FunctionType="Volume">((((x - 14.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="GD_10_FD_1_hS_0.6">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="GD_10_FD_1_hS_0.6" KeyValue="271071769" BranchId="271071770" Archived="0" Date="23-Apr-2024 17:16:22" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_cyt0" Type="Volume" subVolume="cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond33" Type="Volume" subVolume="cond3" regionId="3">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond24" Type="Volume" subVolume="cond2" regionId="4">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond33_cyt0" Type="Surface" subVolumeInside="cond3" regionIdInside="3" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond24_cyt0" Type="Surface" subVolumeInside="cond2" regionIdInside="4" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond11" Type="Volume" subVolume="cond1" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond42" Type="Volume" subVolume="cond4" regionId="2">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond11_cyt0" Type="Surface" subVolumeInside="cond1" regionIdInside="1" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond42_cyt0" Type="Surface" subVolumeInside="cond4" regionIdInside="2" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name="hS_0.6" KeyValue="271071727" BranchId="271071728" Archived="0" Date="23-Apr-2024 17:14:52" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+        <Annotation>(copied from hS_0.8) (copied from hS_0.6) (copied from Ref)</Annotation>
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <SimulationSpec Name="hS_0.4" Stochastic="false" UseConcentration="true" RuleBased="false" MassConservationModelReduction="false" InsufficientIterations="false" InsufficientMaxMolecules="false" CharacteristicSize="0.16663851997944407">
+      <NetworkConstraints RbmMaxIteration="1" RbmMaxMoleculesPerSpecies="10" RbmSpeciesLimit="800" RbmReactionsLimit="2500" />
+      <Annotation>(copied from hS_0.6) (copied from hS_0.8) (copied from hS_0.6) (copied from Ref)</Annotation>
+      <Geometry Name="Geometry1435053609" Dimension="3">
+        <Extent X="20.0" Y="20.0" Z="10.0" />
+        <Origin X="0.0" Y="0.0" Z="0.0" />
+        <SubVolume Name="cond4" Handle="4" Type="Analytical" KeyValue="271115464">
+          <AnalyticExpression>(((((x - 14.0) ^ 2.0) / (3.41 ^ 2.0)) + (((y - 5.0) ^ 2.0) / (3.41 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.38 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond3" Handle="3" Type="Analytical" KeyValue="271115465">
+          <AnalyticExpression>(((((x - 5.0) ^ 2.0) / (3.41 ^ 2.0)) + (((y - 14.0) ^ 2.0) / (3.41 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.38 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond2" Handle="2" Type="Analytical" KeyValue="271115466">
+          <AnalyticExpression>(((((x - 15.0) ^ 2.0) / (3.41 ^ 2.0)) + (((y - 15.0) ^ 2.0) / (3.41 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.38 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cond1" Handle="1" Type="Analytical" KeyValue="271115467">
+          <AnalyticExpression>(((((x - 5.0) ^ 2.0) / (3.41 ^ 2.0)) + (((y - 5.0) ^ 2.0) / (3.41 ^ 2.0)) + (((z - 0.0) ^ 2.0) / (1.38 ^ 2.0))) &lt;= (1.0 ^ 2.0))</AnalyticExpression>
+        </SubVolume>
+        <SubVolume Name="cyt" Handle="0" Type="Analytical" KeyValue="271115468">
+          <AnalyticExpression>1.0</AnalyticExpression>
+        </SubVolume>
+        <SurfaceClass Name="cond1_cyt_membrane" SubVolume1Ref="cond1" SubVolume2Ref="cyt" KeyValue="271115469" />
+        <SurfaceClass Name="cond4_cyt_membrane" SubVolume1Ref="cond4" SubVolume2Ref="cyt" KeyValue="271115470" />
+        <SurfaceClass Name="cond3_cyt_membrane" SubVolume1Ref="cond3" SubVolume2Ref="cyt" KeyValue="271115471" />
+        <SurfaceClass Name="cond2_cyt_membrane" SubVolume1Ref="cond2" SubVolume2Ref="cyt" KeyValue="271115472" />
+        <SurfaceDescription NumSamplesX="128" NumSamplesY="128" NumSamplesZ="64" CutoffFrequency="0.3">
+          <VolumeRegion Name="cyt0" RegionID="0" SubVolume="cyt" Size="3865.445953114128" Unit="um3" />
+          <VolumeRegion Name="cond11" RegionID="1" SubVolume="cond1" Size="33.63555933461073" Unit="um3" />
+          <VolumeRegion Name="cond42" RegionID="2" SubVolume="cond4" Size="33.64146410832503" Unit="um3" />
+          <VolumeRegion Name="cond33" RegionID="3" SubVolume="cond3" Size="33.64146410832503" Unit="um3" />
+          <VolumeRegion Name="cond24" RegionID="4" SubVolume="cond2" Size="33.63555933461073" Unit="um3" />
+          <MembraneRegion Name="membrane_cyt0_cond11" VolumeRegion1="cond11" VolumeRegion2="cyt0" Size="46.159718957924035" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond42" VolumeRegion1="cond42" VolumeRegion2="cyt0" Size="46.152475200401184" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond33" VolumeRegion1="cond33" VolumeRegion2="cyt0" Size="46.152504330524216" Unit="um2" />
+          <MembraneRegion Name="membrane_cyt0_cond24" VolumeRegion1="cond24" VolumeRegion2="cyt0" Size="46.15971895792406" Unit="um2" />
+        </SurfaceDescription>
+        <Version Name="Geometry1435053609" KeyValue="271115461" BranchId="255314429" Archived="0" Date="25-Apr-2024 12:02:40" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Geometry>
+      <GeometryContext>
+        <FeatureMapping Feature="c1" GeometryClass="cond1" SubVolume="cond1" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c3" GeometryClass="cond3" SubVolume="cond3" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c4" GeometryClass="cond4" SubVolume="cond4" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="c2" GeometryClass="cond2" SubVolume="cond2" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <FeatureMapping Feature="cyt" GeometryClass="cyt" SubVolume="cyt" Size="50000.0" VolumePerUnitVolume="1.0">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </FeatureMapping>
+        <MembraneMapping Membrane="cm1" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond1_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm2" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond2_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm3" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond3_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+        <MembraneMapping Membrane="cm4" Size="6563.0" AreaPerUnitArea="1.0" CalculateVoltage="false" SpecificCapacitance="1.0" InitialVoltage="0.0" GeometryClass="cond4_cyt_membrane">
+          <BoundariesTypes Xm="Flux" Xp="Flux" Ym="Flux" Yp="Flux" Zm="Flux" Zp="Flux" />
+        </MembraneMapping>
+      </GeometryContext>
+      <ReactionContext>
+        <LocalizedCompoundSpec LocalizedCompoundRef="GA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>100.0</InitialConcentration>
+          <Diffusion>10.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="FA" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.01</InitialConcentration>
+          <Diffusion>1.0</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cyt" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>0.0</InitialConcentration>
+          <Diffusion>0.001</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm1" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>534.3</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm2" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>534.3</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm3" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>534.3</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <LocalizedCompoundSpec LocalizedCompoundRef="arp_cm4" ForceConstant="false" WellMixed="false" ForceContinuous="false">
+          <InitialConcentration>534.3</InitialConcentration>
+          <Diffusion>0.1</Diffusion>
+        </LocalizedCompoundSpec>
+        <ReactionSpec ReactionStepRef="r0" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r1" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r2" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r3" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r4" ReactionMapping="included" />
+        <ReactionSpec ReactionStepRef="r5" ReactionMapping="included" />
+      </ReactionContext>
+      <MathDescription Name="Copy of hS_0.6_generated">
+        <Constant Name="_F_">96485.3321</Constant>
+        <Constant Name="_F_nmol_">9.64853321E-5</Constant>
+        <Constant Name="_K_GHK_">1.0E-9</Constant>
+        <Constant Name="_N_pmol_">6.02214179E11</Constant>
+        <Constant Name="_PI_">3.141592653589793</Constant>
+        <Constant Name="_R_">8314.46261815</Constant>
+        <Constant Name="_T_">300.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm1">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm2">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm3">1.0</Constant>
+        <Constant Name="AreaPerUnitArea_cm4">1.0</Constant>
+        <Constant Name="arp_cm1_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm1_init_molecules_um_2">534.3</Constant>
+        <Constant Name="arp_cm2_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm2_init_molecules_um_2">534.3</Constant>
+        <Constant Name="arp_cm3_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm3_init_molecules_um_2">534.3</Constant>
+        <Constant Name="arp_cm4_diffusionRate">0.1</Constant>
+        <Constant Name="arp_cm4_init_molecules_um_2">534.3</Constant>
+        <Constant Name="arp_cyt_diffusionRate">0.001</Constant>
+        <Constant Name="arp_cyt_init_uM">0.0</Constant>
+        <Constant Name="FA_diffusionRate">1.0</Constant>
+        <Constant Name="FA_init_uM">0.01</Constant>
+        <Constant Name="GA_diffusionRate">10.0</Constant>
+        <Constant Name="GA_init_uM">100.0</Constant>
+        <Constant Name="K_millivolts_per_volt">1000.0</Constant>
+        <Constant Name="k_rxn">0.001</Constant>
+        <Constant Name="k_transport">100.0</Constant>
+        <Constant Name="Kf_r1">1.0</Constant>
+        <Constant Name="KMOLE">0.001660538783162726</Constant>
+        <Constant Name="Kr_r1">0.0</Constant>
+        <Constant Name="Kr_r2">0.0</Constant>
+        <Constant Name="Kr_r3">0.0</Constant>
+        <Constant Name="Kr_r4">0.0</Constant>
+        <Constant Name="Kr_r5">0.0</Constant>
+        <Constant Name="netValence_r2">1.0</Constant>
+        <Constant Name="netValence_r3">1.0</Constant>
+        <Constant Name="netValence_r4">1.0</Constant>
+        <Constant Name="netValence_r5">1.0</Constant>
+        <Constant Name="UnitFactor_uM_um3_molecules_neg_1">(1.0 * pow(KMOLE,1.0))</Constant>
+        <Constant Name="Voltage_cm1">0.0</Constant>
+        <Constant Name="Voltage_cm2">0.0</Constant>
+        <Constant Name="Voltage_cm3">0.0</Constant>
+        <Constant Name="Voltage_cm4">0.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c1">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c2">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c3">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_c4">1.0</Constant>
+        <Constant Name="VolumePerUnitVolume_cyt">1.0</Constant>
+        <MembraneVariable Name="arp_cm1" Domain="cond1_cyt_membrane" />
+        <MembraneVariable Name="arp_cm2" Domain="cond2_cyt_membrane" />
+        <MembraneVariable Name="arp_cm3" Domain="cond3_cyt_membrane" />
+        <MembraneVariable Name="arp_cm4" Domain="cond4_cyt_membrane" />
+        <VolumeVariable Name="arp_cyt" Domain="cyt" />
+        <VolumeVariable Name="FA" Domain="cyt" />
+        <VolumeVariable Name="GA" Domain="cyt" />
+        <Function Name="J_r0" Domain="cyt">(k_rxn * (GA ^ 2.0) * FA * arp_cyt)</Function>
+        <Function Name="J_r1" Domain="cyt">((Kf_r1 * FA) - (Kr_r1 * GA))</Function>
+        <Function Name="J_r2" Domain="cond1_cyt_membrane">((Kf_r2 * arp_cm1) - (Kr_r2 * arp_cyt))</Function>
+        <Function Name="J_r3" Domain="cond2_cyt_membrane">((Kf_r3 * arp_cm2) - (Kr_r3 * arp_cyt))</Function>
+        <Function Name="J_r4" Domain="cond3_cyt_membrane">((Kf_r4 * arp_cm3) - (Kr_r4 * arp_cyt))</Function>
+        <Function Name="J_r5" Domain="cond4_cyt_membrane">((Kf_r5 * arp_cm4) - (Kr_r5 * arp_cyt))</Function>
+        <Function Name="Kf_r2" Domain="cond1_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r3" Domain="cond2_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r4" Domain="cond3_cyt_membrane">k_transport</Function>
+        <Function Name="Kf_r5" Domain="cond4_cyt_membrane">k_transport</Function>
+        <Function Name="KFlux_cm1_cyt" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm2_cyt" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm3_cyt" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="KFlux_cm4_cyt" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 / VolumePerUnitVolume_cyt)</Function>
+        <Function Name="Size_c1" Domain="cond1">(VolumePerUnitVolume_c1 * vcRegionVolume('cond1'))</Function>
+        <Function Name="Size_c2" Domain="cond2">(VolumePerUnitVolume_c2 * vcRegionVolume('cond2'))</Function>
+        <Function Name="Size_c3" Domain="cond3">(VolumePerUnitVolume_c3 * vcRegionVolume('cond3'))</Function>
+        <Function Name="Size_c4" Domain="cond4">(VolumePerUnitVolume_c4 * vcRegionVolume('cond4'))</Function>
+        <Function Name="Size_cm1" Domain="cond1_cyt_membrane">(AreaPerUnitArea_cm1 * vcRegionArea('cond1_cyt_membrane'))</Function>
+        <Function Name="Size_cm2" Domain="cond2_cyt_membrane">(AreaPerUnitArea_cm2 * vcRegionArea('cond2_cyt_membrane'))</Function>
+        <Function Name="Size_cm3" Domain="cond3_cyt_membrane">(AreaPerUnitArea_cm3 * vcRegionArea('cond3_cyt_membrane'))</Function>
+        <Function Name="Size_cm4" Domain="cond4_cyt_membrane">(AreaPerUnitArea_cm4 * vcRegionArea('cond4_cyt_membrane'))</Function>
+        <Function Name="Size_cyt" Domain="cyt">(VolumePerUnitVolume_cyt * vcRegionVolume('cyt'))</Function>
+        <Function Name="sobj_cond11_cyt0_size" Domain="cond1_cyt_membrane">vcRegionArea('cond1_cyt_membrane')</Function>
+        <Function Name="sobj_cond24_cyt0_size" Domain="cond2_cyt_membrane">vcRegionArea('cond2_cyt_membrane')</Function>
+        <Function Name="sobj_cond33_cyt0_size" Domain="cond3_cyt_membrane">vcRegionArea('cond3_cyt_membrane')</Function>
+        <Function Name="sobj_cond42_cyt0_size" Domain="cond4_cyt_membrane">vcRegionArea('cond4_cyt_membrane')</Function>
+        <Function Name="vobj_cond11_size" Domain="cond1">vcRegionVolume('cond1')</Function>
+        <Function Name="vobj_cond24_size" Domain="cond2">vcRegionVolume('cond2')</Function>
+        <Function Name="vobj_cond33_size" Domain="cond3">vcRegionVolume('cond3')</Function>
+        <Function Name="vobj_cond42_size" Domain="cond4">vcRegionVolume('cond4')</Function>
+        <Function Name="vobj_cyt0_size" Domain="cyt">vcRegionVolume('cyt')</Function>
+        <CompartmentSubDomain Name="cond4">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond3">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond2">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cond1">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+        </CompartmentSubDomain>
+        <CompartmentSubDomain Name="cyt">
+          <BoundaryType Boundary="Xm" Type="Flux" />
+          <BoundaryType Boundary="Xp" Type="Flux" />
+          <BoundaryType Boundary="Ym" Type="Flux" />
+          <BoundaryType Boundary="Yp" Type="Flux" />
+          <BoundaryType Boundary="Zm" Type="Flux" />
+          <BoundaryType Boundary="Zp" Type="Flux" />
+          <PdeEquation Name="GA" SolutionType="Unknown">
+            <Rate>( - J_r0 + J_r1)</Rate>
+            <Diffusion>GA_diffusionRate</Diffusion>
+            <Initial>GA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="FA" SolutionType="Unknown">
+            <Rate>(J_r0 - J_r1)</Rate>
+            <Diffusion>FA_diffusionRate</Diffusion>
+            <Initial>FA_init_uM</Initial>
+          </PdeEquation>
+          <PdeEquation Name="arp_cyt" SolutionType="Unknown">
+            <Rate>0.0</Rate>
+            <Diffusion>arp_cyt_diffusionRate</Diffusion>
+            <Initial>arp_cyt_init_uM</Initial>
+          </PdeEquation>
+        </CompartmentSubDomain>
+        <MembraneSubDomain Name="cond1_cyt_membrane" InsideCompartment="cond1" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm1" SolutionType="Unknown">
+            <Rate>- J_r2</Rate>
+            <Diffusion>arp_cm1_diffusionRate</Diffusion>
+            <Initial>arp_cm1_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm1_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r2)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond4_cyt_membrane" InsideCompartment="cond4" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm4" SolutionType="Unknown">
+            <Rate>- J_r5</Rate>
+            <Diffusion>arp_cm4_diffusionRate</Diffusion>
+            <Initial>arp_cm4_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm4_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r5)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond3_cyt_membrane" InsideCompartment="cond3" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm3" SolutionType="Unknown">
+            <Rate>- J_r4</Rate>
+            <Diffusion>arp_cm3_diffusionRate</Diffusion>
+            <Initial>arp_cm3_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm3_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r4)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <MembraneSubDomain Name="cond2_cyt_membrane" InsideCompartment="cond2" OutsideCompartment="cyt">
+          <BoundaryType Boundary="Xm" Type="Value" />
+          <BoundaryType Boundary="Xp" Type="Value" />
+          <BoundaryType Boundary="Ym" Type="Value" />
+          <BoundaryType Boundary="Yp" Type="Value" />
+          <BoundaryType Boundary="Zm" Type="Value" />
+          <BoundaryType Boundary="Zp" Type="Value" />
+          <PdeEquation Name="arp_cm2" SolutionType="Unknown">
+            <Rate>- J_r3</Rate>
+            <Diffusion>arp_cm2_diffusionRate</Diffusion>
+            <Initial>arp_cm2_init_molecules_um_2</Initial>
+          </PdeEquation>
+          <JumpCondition Name="GA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="FA">
+            <InFlux>0.0</InFlux>
+            <OutFlux>0.0</OutFlux>
+          </JumpCondition>
+          <JumpCondition Name="arp_cyt">
+            <InFlux>0.0</InFlux>
+            <OutFlux>(KFlux_cm2_cyt * UnitFactor_uM_um3_molecules_neg_1 * J_r3)</OutFlux>
+          </JumpCondition>
+        </MembraneSubDomain>
+        <Version Name="Copy of hS_0.6_generated" KeyValue="271115483" BranchId="271115484" Archived="0" Date="25-Apr-2024 12:02:40" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </MathDescription>
+      <OutputFunctions>
+        <AnnotatedFunction Name="Cond1_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond2_ROI" ErrorString="" FunctionType="Volume">((((x - 15.0) ^ 2.0) + ((y - 15.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond3_ROI" ErrorString="" FunctionType="Volume">((((x - 5.0) ^ 2.0) + ((y - 14.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+        <AnnotatedFunction Name="Cond4_ROI" ErrorString="" FunctionType="Volume">((((x - 14.0) ^ 2.0) + ((y - 5.0) ^ 2.0) + (z ^ 2.0)) &lt; (4.0 ^ 2.0))</AnnotatedFunction>
+      </OutputFunctions>
+      <Simulation Name="GD_10_FD_1_hS_0.4">
+        <SolverTaskDescription TaskType="Unsteady" UseSymbolicJacobian="false" Solver="Sundials Stiff PDE Solver (Variable Time Step)">
+          <TimeBound StartTime="0.0" EndTime="100.0" />
+          <TimeStep DefaultTime="0.05" MinTime="0.0" MaxTime="0.1" />
+          <ErrorTolerance Absolut="1.0E-9" Relative="1.0E-7" />
+          <OutputOptions OutputTimeStep="5.0" />
+          <SundialsSolverOptions>
+            <maxOrderAdvection>2</maxOrderAdvection>
+          </SundialsSolverOptions>
+          <NumberProcessors>1</NumberProcessors>
+        </SolverTaskDescription>
+        <MathOverrides />
+        <MeshSpecification>
+          <Size X="80" Y="80" Z="41" />
+        </MeshSpecification>
+        <Version Name="GD_10_FD_1_hS_0.4" KeyValue="271115512" BranchId="271115513" Archived="0" Date="25-Apr-2024 12:02:41" FromVersionable="false">
+          <Owner Name="Ani" Identifier="118630685" />
+          <GroupAccess Type="1" />
+        </Version>
+      </Simulation>
+      <SpatialObjects>
+        <SpatialObject Name="vobj_cyt0" Type="Volume" subVolume="cyt" regionId="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond33" Type="Volume" subVolume="cond3" regionId="3">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond24" Type="Volume" subVolume="cond2" regionId="4">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond33_cyt0" Type="Surface" subVolumeInside="cond3" regionIdInside="3" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond24_cyt0" Type="Surface" subVolumeInside="cond2" regionIdInside="4" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond11" Type="Volume" subVolume="cond1" regionId="1">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="vobj_cond42" Type="Volume" subVolume="cond4" regionId="2">
+          <QuantityCategoryList>
+            <QuantityCategory Name="VolumeCentroid" Enabled="false" />
+            <QuantityCategory Name="InteriorVelocity" Enabled="false" />
+            <QuantityCategory Name="VolumeRegionSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond11_cyt0" Type="Surface" subVolumeInside="cond1" regionIdInside="1" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+        <SpatialObject Name="sobj_cond42_cyt0" Type="Surface" subVolumeInside="cond4" regionIdInside="2" subVolumeOutside="cyt" regionIdOutside="0">
+          <QuantityCategoryList>
+            <QuantityCategory Name="SurfaceNormal" Enabled="false" />
+            <QuantityCategory Name="SurfaceVelocity" Enabled="false" />
+            <QuantityCategory Name="DistanceToSurface" Enabled="false" />
+            <QuantityCategory Name="DirectionToSurface" Enabled="false" />
+            <QuantityCategory Name="SurfaceSize" Enabled="true" />
+          </QuantityCategoryList>
+        </SpatialObject>
+      </SpatialObjects>
+      <Version Name="hS_0.4" KeyValue="271115486" BranchId="271115487" Archived="0" Date="25-Apr-2024 12:02:41" FromVersionable="false">
+        <Owner Name="Ani" Identifier="118630685" />
+        <GroupAccess Type="1" />
+        <Annotation>(copied from hS_0.6) (copied from hS_0.8) (copied from hS_0.6) (copied from Ref)</Annotation>
+      </Version>
+      <MicroscopeMeasurement Name="fluor">
+        <ConvolutionKernel Type="ProjectionZKernel" />
+      </MicroscopeMeasurement>
+    </SimulationSpec>
+    <Version Name="AC_public_FourCondensates_ARP_revised" KeyValue="271115515" BranchId="270889928" Archived="0" Date="25-Apr-2024 12:02:41" FromVersionable="false">
+      <Owner Name="Ani" Identifier="118630685" />
+      <GroupAccess Type="1" />
+    </Version>
+    <pathwayModel>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bp="http://www.biopax.org/release/biopax-level3.owl#" version="3.0" />
+    </pathwayModel>
+    <relationshipModel>
+      <RMNS version="3.0" />
+    </relationshipModel>
+    <vcmetadata>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" />
+      <nonrdfAnnotationList />
+      <uriBindingList />
+    </vcmetadata>
+  </BioModel>
+</vcml>
+
