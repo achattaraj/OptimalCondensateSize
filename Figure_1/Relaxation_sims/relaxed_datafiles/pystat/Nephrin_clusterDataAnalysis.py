@@ -221,29 +221,7 @@ def getStat(dfiles, molType, sysName='', distSave=False):
      
     
     writeData(cs_stat, Rg_sys, Lxyz, mol_dist_stat, sysName=sysName, distSave=distSave)
-   
-'''
-from glob import glob 
-#esList = np.arange(0,11,1)
 
-ensList = ['0.40', '0.45', '0.50']
-
-for Ens in ensList:
-
-    dfiles = glob(f'Y:/Harvard_hpc/01_Neph_nck_nw/HemiS_distributions/Vol_2.25x_S8N{Ens}_input/Run*.DATA')  
-    
-    outpath = 'Y:/Harvard_hpc/01_Neph_nck_nw/HemiS_distributions/00_pystat'
-    
-    neph, nck, nw, arp = arange(1,81), arange(81,321), arange(321,441), arange(441,501)
-    
-    
-    mTyp = {'Arp': arp.astype(int), 'NWASP': nw.astype(int), 
-            'Nck': nck.astype(int), 'Neph': neph.astype(int)}
-    
-    res = getStat(dfiles, molType=mTyp, path = outpath, sysName=f'V2.25x_S8N{Ens}', distSave=False)
-    
-    print()
-'''
    
 
    
